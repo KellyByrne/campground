@@ -44,6 +44,7 @@ class HomePage extends React.Component {
             pets: 0,
             totalPrice: 0,
             subTotal: 0,
+            taxes: 0,
             checkin: '',
             checkout: ''
         });

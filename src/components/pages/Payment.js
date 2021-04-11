@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { fetchAvailability, handleToken, setFormDataItem, setPaymentDataItem } from '../../_actions';
+const TAX_RATE = .11;
 
 class Payment extends React.Component {
 
@@ -22,15 +23,17 @@ class Payment extends React.Component {
             this.props.fetchAvailability(this.props.formData.checkin, this.props.formData.checkout);
         }
         
+        const subTotal = this.props.availability.numberOfNights * this.props.formData.selectedSite.price || 0
+        const taxes = subTotal * TAX_RATE || 0;
 
         this.props.setFormDataItem({
             alert: this.props.formData.alert || {},
             adults: this.props.formData.adults || 0,
             kids: this.props.formData.kids || 0,
             pets: this.props.formData.pets || 0,
-            totalPrice: 0,
-            subTotal: 0,
-            taxes: this.props.formData.taxes || 0,
+            totalPrice: subTotal + taxes,
+            subTotal,
+            taxes,
             checkin: this.props.formData.checkin || '',
             checkout: this.props.formData.checkout || ''
         });
@@ -112,8 +115,8 @@ class Payment extends React.Component {
                             <div className="col-lg-3">
                                 <p><b>Price</b></p>
                                 <p>{this.props.availability.numberOfNights * this.props.formData.selectedSite.price}</p>
-                                <p><b>$6.60</b></p>
-                                <p><b>{6.60 + (this.props.availability.numberOfNights * this.props.formData.selectedSite.price)}</b></p> 
+                                <p><b>{this.props.formData.taxes}</b></p>
+                                <p><b>{this.props.formData.totalPrice}</b></p> 
                                 <p><b></b></p>
                                 <p><b>Amount Due</b></p> 
                             </div>
@@ -145,8 +148,8 @@ class Payment extends React.Component {
                     <StripeCheckout
                         stripeKey="pk_test_51IFU8YCfUXRmPJhQLTaAbhDMJqpTFSyTPfb59TNKpNl7AD3njf6YvPBveSaMcrnAuGiyIz67Kiz7hRhADmYj7mz800Fki77bYe"
                         token={this.props.handleToken}
-                        product={this.state.product}
                         name='Campsite'
+                        amount={this.props.formData.totalPrice * 100}
                         billingAddress
                         shippingAddress
                     />

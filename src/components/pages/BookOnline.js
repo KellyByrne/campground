@@ -47,6 +47,7 @@ class BookOnline extends React.Component {
             pets: this.props.formData.pets || 0,
             totalPrice: 0,
             subTotal: 0,
+            taxes: 0,
             checkin: this.props.formData.checkin || '',
             checkout: this.props.formData.checkout || ''
         });
