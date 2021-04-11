@@ -30,6 +30,7 @@ class Payment extends React.Component {
             pets: this.props.formData.pets || 0,
             totalPrice: 0,
             subTotal: 0,
+            taxes: this.props.formData.taxes || 0,
             checkin: this.props.formData.checkin || '',
             checkout: this.props.formData.checkout || ''
         });
@@ -144,7 +145,7 @@ class Payment extends React.Component {
                     <StripeCheckout
                         stripeKey="pk_test_51IFU8YCfUXRmPJhQLTaAbhDMJqpTFSyTPfb59TNKpNl7AD3njf6YvPBveSaMcrnAuGiyIz67Kiz7hRhADmYj7mz800Fki77bYe"
                         token={this.props.handleToken}
-                        amount={this.state.product.price * 100}
+                        product={this.state.product}
                         name='Campsite'
                         billingAddress
                         shippingAddress
@@ -165,7 +166,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         formData: state.formData,
         availability: state.availability,
-        paymentData: state.paymentData
+        paymentData: state.paymentData,
     }
 
 }

@@ -12,6 +12,6 @@ export const handleToken = (token, addresses) => async (dispatch) => {
     const response = await data.post('/payment', { token, addresses });
     console.log(token);
     console.log(addresses)
-    console.log(response.data);
+    console.log('response', response);
     dispatch({type: dataConstants.HANDLE_TOKEN, payload: response.data});
 }
