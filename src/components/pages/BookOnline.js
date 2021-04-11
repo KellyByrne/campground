@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import sitemap from '../../images/cane-creek-camp-map.png';
 import { fetchAvailability, setFormDataItem } from '../../_actions';
 import DatePicker from '../DatePicker';
@@ -28,7 +29,8 @@ class BookOnline extends React.Component {
             {value: "other" , name: "Other"},
             {value: "storage" , name: "Storage"},
             {value: "toy-hauler" , name: "Toy Hauler"},
-          ]
+        ],
+        showConfirmBtn: false
         };
     }
 
@@ -111,17 +113,22 @@ class BookOnline extends React.Component {
     }
 
     selectSite = (id) => {
+        let allSites = document.getElementsByClassName('site');
         let identifier = id;
         let element = document.getElementById(identifier);
-        
-        if (element.checked) {
-            this.props.courses.forEach(item => {
-                if (item.programId === id) {
-                    this.props.formData.selectedCourses.push(item);
-                    this.props.setFormDataItem({ selectedCourses: this.props.formData.selectedCourses });
-                }
-            })
+        for (var i = 0; i < allSites.length; i++) {
+            allSites[i].style.borderColor = '#6c757d';
+            allSites[i].style.borderWidth = '1px';
         }
+        element.style.borderColor = '#6FA9B4';
+        element.style.borderWidth = '3px';
+        this.setState({ showConfirmBtn: true });
+
+        this.props.availability.availableSites.forEach(site => {
+            if (site.id === id) {
+                this.props.setFormDataItem({ selectedSite: site});
+            }
+        })
     }
 
     handleChange = (e, inputName) => {
@@ -164,13 +171,18 @@ class BookOnline extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6 section-left available-sites">
+                    <div className="col-lg-6 section-left available-sites">
                         <h3>Available Sites</h3>
                         {this.generateAvailableSites()}
                     </div>
-                    <div className="col-6 section-right sitemap">
+                    <div className="col-lg-6 section-right sitemap">
                         <h3>Site Map</h3>
                         <img alt="tree" src={sitemap}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <button className={this.state.showConfirmBtn ? "carousel-button blue longer" : 'hide'}><Link to="/details">Confirm Date &amp; Site</Link></button>
                     </div>
                 </div>
             </div>

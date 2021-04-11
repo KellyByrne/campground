@@ -104,7 +104,7 @@ class HomePage extends React.Component {
         return (
             <div className="container-fluid" id="scrollElement"  ref={this.scrollElement}>
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-lg-12 col-sm-12">
                         <div className="hero">
                             <div className="overlay"></div>
                             <p className="message">Now Booking!</p>
@@ -117,7 +117,7 @@ class HomePage extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-lg-12 col-sm-12">
                         <form>
                             <div className="booking-strip">
                                 <div><p>Booking Info</p></div>
@@ -145,15 +145,15 @@ class HomePage extends React.Component {
                     </div>
                 </div>
                 <div className="row amenities">
-                    <div className="col-6 photo-sc">
+                    <div className="col-lg-6 col-sm-12 photo-sc">
                         <img alt="tree" src={nighttrees}/>
                     </div>
-                    <div className="col-6 copy-sc">
+                    <div className="col-lg-6 col-sm-12 copy-sc">
                         <span className="amenity-tree"><img alt="tree" src={singletree}/></span>
                         <h3>Amenities </h3>
                         <ul>
-                            <li>25 minutes to downtown Nashville</li>
-                            <li>Pet friendly with pet fencing around sites for rent </li>
+                            <li>Access to Douglas Lake</li>
+                            <li>Indoor Pool </li>
                             <li>Leash free dog park</li>
                             <li>Free &amp; Fast Wifi</li>
                             <li>Clean, tiled restrooms &amp; showers</li>
@@ -163,7 +163,7 @@ class HomePage extends React.Component {
                     </div>
                 </div>
                 <div className="row amenities">
-                    <div className="col-12">
+                    <div className="col-lg-12 col-sm-12">
                         "The location is perfect, the bathrooms are clean and the atmosphere is peaceful. "
                     </div>
                 </div>

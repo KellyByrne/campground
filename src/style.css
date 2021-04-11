@@ -53,6 +53,7 @@ body {font-family: 'Lato' !important;}
     width: 500px;
     top: 79px;
     left: -24px;
+    color: #000;
 }
 .header .logo {    
     position: relative;
@@ -272,6 +273,10 @@ body {font-family: 'Lato' !important;}
     text-decoration: none;
 }
 
+.carousel-button.longer {
+    width: auto;
+}
+
 input.form-control.guest-info {
     width:250px;
 }
@@ -321,4 +326,617 @@ p.copy {
 
 .site p {
     margin-bottom: 5px;
+}
+
+.hide {
+    display: none;
+}
+
+label.form-label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.personal-info input, .payment-info input {
+    width: 70%;
+}
+
+.hamburger:focus {
+    outline: 0
+}
+
+.hamburger {
+    padding: 0;
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity,-webkit-filter;
+    transition-property: opacity,filter;
+    transition-property: opacity,filter,-webkit-filter;
+    transition-duration: .15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+    padding: 0.3125rem 0 0 0.625rem;
+    position: absolute;
+    right: 0;
+    top: 0.3125rem;
+}
+
+.hamburger-box {
+    width: 2rem;
+    height: 1.9375rem;
+    display: inline-block;
+    position: relative
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -0.75rem;
+}
+
+.hamburger-inner,.hamburger-inner::after,.hamburger-inner::before {
+    width: 1.5625rem;
+    height: 0.125rem;
+    background-color: #000;
+    border-radius: 0.25rem;
+    position: absolute;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    transition-duration: .15s;
+    transition-timing-function: ease
+}
+
+.hamburger-inner::after,.hamburger-inner::before {
+    content: "";
+    display: block
+}
+
+.hamburger-inner::before {
+    top: -0.625rem;
+}
+
+.hamburger-inner::after {
+    bottom: -0.625rem;
+}
+
+.hamburger--slider .hamburger-inner {
+    top: 0.5625rem
+}
+
+.hamburger--slider .hamburger-inner::before {
+    top: 0.625rem;
+    transition-property: opacity,-webkit-transform;
+    transition-property: transform,opacity;
+    transition-property: transform,opacity,-webkit-transform;
+    transition-timing-function: ease;
+    transition-duration: .2s
+}
+
+.hamburger--slider .hamburger-inner::after {
+    top: 1.25rem;
+}
+
+.hamburger--slider.is-active .hamburger-inner {
+    -webkit-transform: translate3d(0,0.625rem,0) rotate(45deg);
+    transform: translate3d(0,0.625rem,0) rotate(45deg)
+}
+
+.hamburger--slider.is-active .hamburger-inner::before {
+    -webkit-transform: rotate(-45deg) translate3d(-0.357143125rem,-0.375rem,0);
+    transform: rotate(-45deg) translate3d(-0.357143125rem,-0.375rem,0);
+    opacity: 0
+}
+
+.hamburger--slider.is-active .hamburger-inner::after {
+    -webkit-transform: translate3d(0,-1.25rem,0) rotate(-90deg);
+    transform: translate3d(0,-1.25rem,0) rotate(-90deg)
+}
+
+
+
+.menu-container { 
+    background: #fff;  
+    left: 0; 
+    height: 100vh; 
+    top: 56px; 
+    padding: 0;
+    position: absolute; 
+    overflow-y: scroll;
+    overflow-x: hidden;
+    opacity: 0; 
+    visibility: hidden;
+}
+
+.menu-container.active {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: visibility 0s linear 0s, opacity .3s;
+    -o-transition: visibility 0s linear 0s, opacity .3s;
+    transition: visibility 0s linear 0s, opacity .3s;
+}
+
+.mobileonly {
+    display:none;
+}
+
+.desktoponly {
+    display:block;
+}
+
+.circle-icon {
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+
+.circle img {
+    height: 66%;
+}
+
+.circle-icon h2 {
+    text-align: center;
+    font-size: 45px;
+    color: #222222;
+    font-family: 'utopia-std' !important;
+    font-weight: bold;
+}
+
+.circle-icon p {
+    text-align: center;
+    font-size: 20px;
+    color: #222222;
+    padding: 0 20px;
+}
+
+.circle-icon .circle-container {
+    padding-top: 40px;
+}
+
+.circle-icon .circle-container .circle {
+    margin: 0 auto;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.circle-icon .circle-container h4 {
+    font-size: 20px;
+    color: #588790;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 40px;
+    font-family: 'BonVivantSerifBold';
+}
+
+.circle-icon .circle-container p {
+    color: #636363;
+    font-size: 16px;
+    padding: 0 25px;
+}
+
+.circle-icon .circle-info {
+    margin-top: 70px;
+}
+
+.circle-info span {
+    display: block;
+}
+
+.circle-icon .circle-info p {
+    font-size: 20px;
+    color: #222222;
+    margin-bottom: 0px;
+}
+
+.circle-icon .circle-info p a {
+    font-size: 20px;
+    color: #e1792c;
+    font-weight: bold;
+}
+
+
+ /* // Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) { 
+    .mobileonly {
+        display: block;
+    }
+
+    .desktoponly {
+        display:none;
+    }
+ }
+
+ /* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) { 
+    .mobileonly {
+        display: block;
+    }
+
+    .desktoponly {
+        display:none;
+    }
+
+    .header {
+        /* background: green; */
+        min-height: 120px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .header .title {
+        height: auto;
+        padding-left:10px;
+    }
+    
+    .header .logo {
+        position: initial;
+        padding-left: 0;
+    }
+    
+    .header h1 {
+        font-size: 46px;
+        letter-spacing: 1px;
+        padding-left: 10px;
+        width: 265px;
+        left: 33px;
+        top: -15px;
+        z-index: 0;
+    }
+    
+    .header h2 {
+        padding-left: 13px;
+        font-size: 16px;
+        top: 44px;
+        left: 32px;
+        width: 248px;
+    }
+    
+    .header .tiny {
+        height: 72px;
+        left: -10px;
+        top: -19px;
+    }
+
+    .header .collapse-mobile {
+        /* display:none; */
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        background: #fff;
+        float: none;
+        z-index: 100;
+        text-align: right;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-right: 0;
+        padding: 75px 50px 50px;
+        right: 0;
+        top: -30px;
+    }
+
+    .header .collapse-mobile li {
+        display:block;
+        padding: 8px;
+    }
+
+    .hamburger {
+        right: 10px;
+        top: -5px;
+        z-index: 100;
+    }
+
+    .hero {
+        background: url(/static/media/tree-line-1.6a115048.png) no-repeat left 100%;
+        height: auto;
+        background-size: contain;
+        padding: 50px 0 120px;
+    }
+
+    .hero .box {
+        width: 250px;
+        position: relative;
+        margin: 0 auto;
+        right: initial;
+        top: initial;
+    }
+
+    .hero .message {
+        display:none;
+    }
+
+    .booking-strip {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 20px 50px 30px;
+    }
+
+    .booking-strip div {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .booking-strip p {
+        text-align: center;
+        font-size: 34px;
+        margin-right: 0;
+        margin-top: 0;
+    }
+
+    .booking-strip .carousel-button {
+        margin-top: 18px;
+    }
+
+    .amenities {
+        padding: 0;
+    }
+
+    .amenities .photo-sc img {
+        height: auto;
+        padding-top: 0;
+        width: 100%;
+    }
+
+    .amenities .copy-sc {
+        padding: 20px 50px 30px !important;
+    }   
+
+    .amenities .copy-sc h3 {
+        font-size: 34px;
+    }
+
+    .amenity-tree img {
+        height: 55px;
+    }
+
+    .sitemap.section-right {
+        padding: 0 !important;
+        margin: 20px !important;
+    }
+
+    .sitemap img {
+        width: 100%;
+    }
+
+    input.form-control.guest-info {
+        width: 100%;
+    }
+
+    .calendar-div, .dropdown-div {
+        width: 70%;
+    }
+
+ }
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  {
+    .mobileonly {
+        display: block;
+    }
+
+    .desktoponly {
+        display:none;
+    }
+
+    .header {
+        /* background: green; */
+        min-height: 120px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .header .title {
+        height: auto;
+        padding-left:10px;
+    }
+    
+    .header .logo {
+        position: initial;
+        padding-left: 0;
+    }
+    
+    .header h1 {
+        font-size: 46px;
+        letter-spacing: 1px;
+        padding-left: 10px;
+        width: 265px;
+        left: 33px;
+        top: -15px;
+        z-index: 0;
+    }
+    
+    .header h2 {
+        padding-left: 13px;
+        font-size: 16px;
+        top: 44px;
+        left: 32px;
+        width: 248px;
+    }
+    
+    .header .tiny {
+        height: 72px;
+        left: -10px;
+        top: -19px;
+    }
+
+    .header .collapse-mobile {
+        /* display:none; */
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        background: #fff;
+        float: none;
+        z-index: 100;
+        text-align: right;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-right: 0;
+        padding: 75px 50px 50px;
+        right: 0;
+        top: -30px;
+    }
+
+    .header .collapse-mobile li {
+        display:block;
+        padding: 8px;
+    }
+
+    .hamburger {
+        right: 10px;
+        top: -5px;
+        z-index: 100;
+    }
+
+    .hero {
+        background: url(/static/media/tree-line-1.6a115048.png) no-repeat left 100%;
+        height: auto;
+        background-size: contain;
+        padding: 50px 0 120px;
+    }
+
+    .hero .box {
+        width: 250px;
+        position: relative;
+        margin: 0 auto;
+        right: initial;
+        top: initial;
+    }
+
+    .hero .message {
+        display:none;
+    }
+
+    .booking-strip {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 20px 50px 30px;
+    }
+
+    .booking-strip div {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .booking-strip p {
+        text-align: center;
+        font-size: 34px;
+        margin-right: 0;
+        margin-top: 0;
+    }
+
+    .booking-strip .carousel-button {
+        margin-top: 18px;
+    }
+
+    .amenities {
+        padding: 0;
+    }
+
+    .amenities .photo-sc img {
+        height: auto;
+        padding-top: 0;
+        width: 100%;
+    }
+
+    .amenities .copy-sc {
+        padding: 20px 50px 30px !important;
+    }   
+
+    .amenities .copy-sc h3 {
+        font-size: 34px;
+    }
+
+    .amenity-tree img {
+        height: 55px;
+    }
+}
+
+
+/* ipad pro Landscape */
+@media only screen and (min-device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)  {
+   
+}
+
+/* ipad pro Portrait */
+/* @media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)  {
+  
+} */
+
+/* @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+
+} */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    /* .header {background: red;} */
+
+    .hero {
+        height: 500px;
+        padding: 100px;
+    }
+
+    .hero .message {
+        display: block;
+        font-size: 79px;
+        top: 349px;
+    }
+
+    .hero .box {
+        position: absolute;
+        right: 60px;
+        top: 80px;
+        width: 380px;
+    }
+
+    input.form-control.guest-info {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width: 812px) and (orientation: landscape) {
+    .header {background:#fff;}
+
+
+    .hero .box {
+        width: 400px;
+    }
+
+    .booking-strip {flex-wrap: wrap;}
+
+    input.form-control.guest-info {
+        width: 100%;
+    }
+
+}
+
+
+/* @media screen and (min-width: 375px) and (max-width: 667px) and (orientation: landscape) {
+  
+} */
+
+.header .collapse-mobile.is-active {
+    /* display:block; */
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: visibility 0s linear 0s, opacity .3s;
+    -o-transition: visibility 0s linear 0s, opacity .3s;
+    transition: visibility 0s linear 0s, opacity .3s;
+    box-shadow: 0px 6px 15px 0px rgb(0 0 0 / 10%)
 }

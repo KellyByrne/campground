@@ -1,18 +1,20 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import Attractions from './pages/Attractions';
-import ContactUs from './pages/ContactUs';
-import Gallery from './pages/Gallery';
-import Amenities from './pages/Amenities';
-import Rates from './pages/Rates';
-import Header from './Header';
-import Footer from './Footer';
-import ParkMap from './pages/ParkMap';
-import BookOnline from './pages/BookOnline';
-import configureStore from '../store';
 // import {ConnectedRouter} from 'react-router-redux';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import configureStore from '../store';
+import Footer from './Footer';
+import Header from './Header';
+import Amenities from './pages/Amenities';
+import Attractions from './pages/Attractions';
+import BookOnline from './pages/BookOnline';
+import ContactUs from './pages/ContactUs';
+import Details from './pages/Details';
+import Gallery from './pages/Gallery';
+import HomePage from './pages/HomePage';
+import ParkMap from './pages/ParkMap';
+import Payment from './pages/Payment';
+import Rates from './pages/Rates';
 
 export const store = configureStore();
 
@@ -30,7 +32,9 @@ const App = () => {
                         <Route path="/attractions"  component={Attractions}/>
                         <Route path="/gallery"  component={Gallery}/> 
                         <Route path="/contactus"  component={ContactUs}/>   
-                        <Route path="/book"  component={BookOnline}/>  
+                        <Route path="/book" component={BookOnline} />  
+                        <Route path="/payment" component={Payment} />  
+                        <Route path="/details"  component={Details}/>  
                     </div>
                     <Footer/>
                 </Router>
