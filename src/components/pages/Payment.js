@@ -1,10 +1,16 @@
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import StripeCheckout from 'react-stripe-checkout';
+// import StripeCheckout from 'react-stripe-checkout';
 import { fetchAvailability, handleToken, setFormDataItem, setPaymentDataItem } from '../../_actions';
+import CheckoutForm from '../CheckoutForm';
 const TAX_RATE = .11;
+// eslint-disable-next-line no-undef
+const stripePromise = loadStripe('pk_test_51IFU8YCfUXRmPJhQLTaAbhDMJqpTFSyTPfb59TNKpNl7AD3njf6YvPBveSaMcrnAuGiyIz67Kiz7hRhADmYj7mz800Fki77bYe');
+
 
 class Payment extends React.Component {
 
@@ -43,7 +49,7 @@ class Payment extends React.Component {
         // window.scrollTo(100, 0)
 
         const list = ReactDOM.findDOMNode(this.scrollElement.current);
-        console.log(list);
+        // console.log(list);
         list.addEventListener('scroll', this.handleScroll());
         // console.log(list);
         // node.addEventListener('scroll', this.handleScroll.bind(this))
@@ -121,9 +127,6 @@ class Payment extends React.Component {
                                 <p><b>Amount Due</b></p> 
                             </div>
                         </div>
-                        <div class="row">
-                            
-                        </div>
                     </div>
                     <div className="col-lg-5 section-right details">
                         <div className="reservation-details">
@@ -144,15 +147,11 @@ class Payment extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                  
-                    <StripeCheckout
-                        stripeKey="pk_test_51IFU8YCfUXRmPJhQLTaAbhDMJqpTFSyTPfb59TNKpNl7AD3njf6YvPBveSaMcrnAuGiyIz67Kiz7hRhADmYj7mz800Fki77bYe"
-                        token={this.props.handleToken}
-                        name='Campsite'
-                        amount={this.props.formData.totalPrice * 100}
-                        billingAddress
-                        shippingAddress
-                    />
+                    <div className="col-lg-5 section-right details">
+                        <Elements stripe={stripePromise}>
+                            <CheckoutForm product={this.state.product} formData={this.props.formData}/>
+                        </Elements>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col-lg-12">
