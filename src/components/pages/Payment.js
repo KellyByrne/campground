@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import StripeCheckout from 'react-stripe-checkout';
-import { fetchAvailability, handleToken, setFormDataItem, setPaymentDataItem } from '../../_actions';
+import { fetchAvailability, setFormDataItem, setPaymentDataItem } from '../../_actions';
 import CheckoutForm from '../CheckoutForm';
 const TAX_RATE = .11;
 // eslint-disable-next-line no-undef
@@ -173,4 +173,4 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 
-export default connect(mapStateToProps, {fetchAvailability, setFormDataItem, setPaymentDataItem, handleToken}) (Payment);
+export default connect(mapStateToProps, {fetchAvailability, setFormDataItem, setPaymentDataItem}) (Payment);

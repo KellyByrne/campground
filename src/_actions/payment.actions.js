@@ -8,11 +8,9 @@ export const setPaymentDataItem = (data) => async (dispatch) => {
     });
 }
 
-export const handleToken = (token, product) => async (dispatch) => {
-    const response = await data.post('/payment', { token, product });
+export const handleToken = (result) => async (dispatch) => {
+    const response = await data.post('/payment', result );
     console.log('is this running?');
-    console.log(token);
-    console.log(product);
     console.log(response.data);
     dispatch({type: dataConstants.HANDLE_TOKEN, payload: response.data});
 }

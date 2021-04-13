@@ -1,6 +1,7 @@
 import { CardElement, ElementsConsumer } from "@stripe/react-stripe-js";
 import React from "react";
 import { connect } from 'react-redux';
+import { handleToken } from "../../_actions";
 import CardSection from "../CardSection";
 
 
@@ -20,6 +21,7 @@ class CheckoutForm extends React.Component {
     if (result.error) {
       console.log(result.error.message);
     } else {
+      this.props.handleToken(result);
       console.log(result.token);
     }
   };
@@ -43,9 +45,10 @@ const mapStateToProps = (state) => {
   return {  }
 };
 
-const mapDispachToProps = dispatch => {
+const mapDispachToProps = (dispatch, ownProps) => {
   return {
-    storePaymentIntent: (y) => dispatch({ type: "PAYMENT_INTENT", value: y })
+    storePaymentIntent: (y) => dispatch({ type: "PAYMENT_INTENT", value: y }),
+    handleToken: (token) => dispatch(handleToken({ ...ownProps, ...token }))
   };
 };
 
