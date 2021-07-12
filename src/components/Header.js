@@ -31,7 +31,7 @@ class Header extends React.Component {
                         <Link to="/">
                             <div className="logo" >
                                 <h1>Lakeside Pines</h1>
-                                <h2>Campground &amp; RV Community</h2>
+                                <h2>Campground &amp; RV Resort</h2>
                                 <img alt="tree" className="tiny" src={tinytrees}/>
                             </div>
                         </Link>

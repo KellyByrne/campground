@@ -111,7 +111,7 @@ class HomePage extends React.Component {
                             <p className="message">Now Booking!</p>
                             <div className="box">
                                 <h2>Private, Shaded 30/50 Amp Sites</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br/> <br/> Questions?</p> 
+                                <p>Looking for a lakeside campsite for your stay in Dandridge, TN? Book a shaded spot at Lakeside Pines and enjoy the natural beauty of Douglas Lake surrounded by trees as well as our indoor pool and clean bathrooms. <br/> <br/> Questions?</p> 
                                 <Link to="/" className="carousel-button blue" onClick={this.logit}>CALL NOW</Link>
                             </div>
                         </div>
@@ -145,29 +145,38 @@ class HomePage extends React.Component {
                         </form> 
                     </div>
                 </div>
-                <div className="row amenities">
-                    <div className="col-lg-6 col-sm-12 photo-sc">
-                        <img alt="tree" src={nighttrees}/>
+                <section className="amenities">
+                    <div className="row">
+                        <div className="col-lg-6 col-sm-12 photo-sc">
+                            <img alt="tree" src={nighttrees}/>
+                        </div>
+                        <div className="col-lg-6 col-sm-12 copy-sc">
+                            <span className="amenity-tree"><img alt="tree" src={singletree}/></span>
+                            <h3>Amenities </h3>
+                            <ul>
+                                <li>Access to Douglas Lake</li>
+                                <li>Indoor Pool </li>
+                                <li>Leash free dog park</li>
+                                <li>Free &amp; Fast Wifi</li>
+                                <li>Clean, tiled restrooms &amp; showers</li>
+                                <li>Free laundry</li>
+                                <li>10 minutes to grocery shopping</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div className="col-lg-6 col-sm-12 copy-sc">
-                        <span className="amenity-tree"><img alt="tree" src={singletree}/></span>
-                        <h3>Amenities </h3>
-                        <ul>
-                            <li>Access to Douglas Lake</li>
-                            <li>Indoor Pool </li>
-                            <li>Leash free dog park</li>
-                            <li>Free &amp; Fast Wifi</li>
-                            <li>Clean, tiled restrooms &amp; showers</li>
-                            <li>Free laundry</li>
-                            <li>10 minutes to grocery shopping</li>
-                        </ul>
+                </section>
+                <section className="testimonials">
+                    <div className="overlay"></div>
+                    <div className="dark-overlay"></div>
+                    <div className="row">
+                        <div className="col-lg-12 col-sm-12">
+                            <div className="quote-container">
+                                <p>"The location is perfect, the bathrooms are clean and the atmosphere is peaceful."</p>
+                                <h3>Timothy Vickery</h3>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="row amenities">
-                    <div className="col-lg-12 col-sm-12">
-                        "The location is perfect, the bathrooms are clean and the atmosphere is peaceful. "
-                    </div>
-                </div>
+                </section>
             </div>
         );
     };

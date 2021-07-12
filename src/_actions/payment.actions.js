@@ -10,7 +10,9 @@ export const setPaymentDataItem = (data) => async (dispatch) => {
 
 export const handleToken = (result) => async (dispatch) => {
     const response = await data.post('/payment', result );
-    console.log('is this running?');
-    console.log(response.data);
     dispatch({type: dataConstants.HANDLE_TOKEN, payload: response.data});
+}
+
+export const clearPaymentData = () => async (dispatch) => {
+    dispatch({type: dataConstants.CLEAR_PAYMENT_DATA, payload: ''});
 }

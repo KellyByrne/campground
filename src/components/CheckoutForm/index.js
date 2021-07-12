@@ -1,18 +1,39 @@
 import { CardElement, ElementsConsumer } from "@stripe/react-stripe-js";
 import React from "react";
 import { connect } from 'react-redux';
-import { handleToken } from "../../_actions";
+import { handleToken, setFormDataItem } from "../../_actions";
 import CardSection from "../CardSection";
 
 
 class CheckoutForm extends React.Component {
   
   handleSubmit = async event => {
+
+    const alert = {};
+    const emailValidation = (/^\S+@\S+\.\S+$/);
+    // const phoneValidation = (/^\s*(?:\+?(\d{1,3}))?[-.(]*(\d{3})[-.)]*(\d{3})[-.]*(\d{4})(?:*x(\d+))?\s*$/);
+    if (Object.keys(this.props.formData).length !== 0) {
+      if (!emailValidation.test(this.props.formData.email) || this.props.formData.email === '' ) {
+          alert['email'] = "Please enter a valid email address"
+      } 
+      // if (!phoneValidation.test(this.props.formData.phone) || this.props.formData.phone === '') {
+      // //   alert['phone'] = "Please enter a valid phone number"
+      // }
+
+      console.log(this.props.formData.name);
+      if (this.props.formData.name === '') {
+        alert['name'] = "Please enter a name"
+      }
+    }
+
+    this.props.setFormDataItem({ alert })
+
+
     event.preventDefault();
     console.log(this.props);
 
     const { stripe, elements } = this.props;
-    if (!stripe || !elements) {
+    if (!stripe || !elements || (Object.keys(this.props.formData.alert).length >= 1)) {
       return;
     }
 
@@ -32,8 +53,8 @@ class CheckoutForm extends React.Component {
       <div className="DemoWrapper">
         <form onSubmit={this.handleSubmit}>
           <CardSection />
-          <button disabled={!this.props.stripe} className="btn-pay">
-            Buy Now
+          <button disabled={!this.props.stripe} className='carousel-button blue longer'>
+            Reserve &amp; Pay
           </button>
         </form>
       </div>
@@ -48,7 +69,8 @@ const mapStateToProps = (state) => {
 const mapDispachToProps = (dispatch, ownProps) => {
   return {
     storePaymentIntent: (y) => dispatch({ type: "PAYMENT_INTENT", value: y }),
-    handleToken: (token) => dispatch(handleToken({ ...ownProps, ...token }))
+    handleToken: (token) => dispatch(handleToken({ ...ownProps, ...token })),
+    setFormDataItem: (inputName, value) => dispatch(setFormDataItem({...ownProps, ...inputName, ...value}))
   };
 };
 

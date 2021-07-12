@@ -183,7 +183,7 @@ class BookOnline extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-12">
-                        <button className={this.state.showConfirmBtn ? "carousel-button blue longer" : 'hide'}><Link to="/details">Confirm Date &amp; Site</Link></button>
+                        <button className={this.state.showConfirmBtn ? "carousel-button blue longer" : 'hide'}><Link to="/payment">Confirm &amp; Pay</Link></button>
                     </div>
                 </div>
             </div>

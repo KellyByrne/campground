@@ -12,6 +12,10 @@ export const paymentData = (state={}, action) => {
                 ...state,
                 ...action.payload
             };
+        case dataConstants.CLEAR_PAYMENT_DATA:
+            return {
+                ...action.payload
+            };
         default:
             return state;
     }
