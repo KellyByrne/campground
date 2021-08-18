@@ -9,6 +9,8 @@ class CheckoutForm extends React.Component {
   
   handleSubmit = async event => {
 
+
+    
     const alert = {};
     const emailValidation = (/^\S+@\S+\.\S+$/);
     // const phoneValidation = (/^\s*(?:\+?(\d{1,3}))?[-.(]*(\d{3})[-.)]*(\d{3})[-.]*(\d{4})(?:*x(\d+))?\s*$/);
