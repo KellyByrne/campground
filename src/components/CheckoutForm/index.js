@@ -8,8 +8,6 @@ import CardSection from "../CardSection";
 class CheckoutForm extends React.Component {
   
   handleSubmit = async event => {
-
-
     
     const alert = {};
     const emailValidation = (/^\S+@\S+\.\S+$/);
@@ -22,7 +20,7 @@ class CheckoutForm extends React.Component {
       // //   alert['phone'] = "Please enter a valid phone number"
       // }
 
-      console.log(this.props.formData.name);
+
       if (this.props.formData.name === '') {
         alert['name'] = "Please enter a name"
       }
