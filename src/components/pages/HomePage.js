@@ -7,7 +7,7 @@ import nighttrees from '../../images/turqnight.JPG';
 import '../../style.css';
 import { fetchAvailability, setFormDataItem } from '../../_actions';
 import DatePicker from '../DatePicker';
-import GuestDropDown from '../GuestDropDown';
+// import GuestDropDown from '../GuestDropDown';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class HomePage extends React.Component {
         this.scrollElement = React.createRef();
 
         this.state = {
+          date: new Date(new Date().setHours(0,0,0,0)), // + (3600 * 1000 * 24)),
           unitTypes: [
             {value: "motorhome" , name: "Motorhome"},
             {value: "motorhome-towing" , name: "Motorhome Towing"},
@@ -35,6 +36,7 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
+
         this.props.fetchAvailability();
 
         this.props.setFormDataItem({
@@ -122,10 +124,10 @@ class HomePage extends React.Component {
                         <form>
                             <div className="booking-strip">
                                 <div><p>Booking Info</p></div>
-                                <DatePicker placeholder="Checkin" formItemName="checkin" containerClass={"form-group"} labelText="Checkin"/>
-                                <DatePicker placeholder="Checkout" formItemName="checkout" containerClass={"form-group"} labelText="Checkout"/>
-                                <GuestDropDown/>
-                                <div>
+                                <DatePicker placeholder="Checkin" minDate={this.state.date} formItemName="checkin" containerClass={"form-group"} labelText="Checkin"/>
+                                <DatePicker placeholder="Checkout" minDate={this.state.date} formItemName="checkout" containerClass={"form-group"} labelText="Checkout"/>
+                                {/* <GuestDropDown/> */}
+                                {/* <div>
                                     {this.displayAlert()}
                                     <div className="form-group">
                                         <label className="form-label">Unit Type </label>
@@ -139,7 +141,7 @@ class HomePage extends React.Component {
                                             {this.generateUnitOptions()}
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <button className="carousel-button blue"><Link to="/book">Book Online</Link></button>
                             </div>
                         </form> 

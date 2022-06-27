@@ -55,12 +55,20 @@ class DatePicker extends React.Component {
        
     }
 
+
     handleDayClick = (day, {selected}) => {
-        this.setState({
-            selectedDay: selected ? undefined : day,
-        });
-        const correctFormat = day.toLocaleDateString();
-        this.handleChange(this.props.inputKey, correctFormat);
+      // console.log('day', day);
+      // console.log('this.props.minDate', this.props.minDate);
+      if (day < this.props.minDate) {
+        alert('checkin/checkout cannot be before today');
+        return;
+      }
+
+      this.setState({
+          selectedDay: selected ? undefined : day,
+      });
+      const correctFormat = day.toLocaleDateString();
+      this.handleChange(this.props.inputKey, correctFormat);
     } 
 
     handleYearMonthChange(month) {
