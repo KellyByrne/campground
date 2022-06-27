@@ -41,6 +41,9 @@ class Payment extends React.Component {
             taxes,
             startDate: this.props.formData.checkin || '',
             endDate: this.props.formData.checkout || '',
+            name: this.props.formData.name,
+            email: this.props.formData.email,
+            phone: this.props.formData.phone
         });
 
         // window.addEventListener('scroll', this.handleScroll);
@@ -145,11 +148,46 @@ class Payment extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-lg-5 section-right details">
-                        <Elements stripe={stripePromise}>
-                            <CheckoutForm product={this.state.product} formData={this.props.formData}/>
-                        </Elements>
+                <div>
+                        <div className="col-lg-12">
+                        <form>
+                            <div>
+                                <div><p>Booking Info</p></div>
+                                <div className="form-group">
+                                    <label className="form-label">Name </label>
+                                    <input 
+                                        className="form-input form-control"
+                                        key="name"
+                                        required
+                                        value={this.props.formData.name}
+                                        onChange={(e) => {this.handleChange(e, 'name')}}
+                                        />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Email </label>
+                                    <input 
+                                        className="form-input form-control"
+                                        key="email"
+                                        required
+                                        value={this.props.formData.email}
+                                        onChange={(e) => {this.handleChange(e, 'email')}}
+                                        />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Phone </label>
+                                    <input 
+                                        className="form-input form-control"
+                                        key="phone"
+                                        required
+                                        value={this.props.formData.phone}
+                                        onChange={(e) => {this.handleChange(e, 'phone')}}
+                                        />
+                                </div>
+                            </div>
+                            <Elements stripe={stripePromise}>
+                                <CheckoutForm product={this.state.product} formData={this.props.formData}/>
+                            </Elements>
+                        </form> 
                     </div>
                 </div>
                 <div className="row">
