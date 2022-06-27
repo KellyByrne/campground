@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import StripeCheckout from 'react-stripe-checkout';
-import { clearPaymentData, fetchAvailability, setFormDataItem, setPaymentDataItem } from '../../_actions';
+import { fetchAvailability, setFormDataItem, setPaymentDataItem } from '../../_actions';
 import CheckoutForm from '../CheckoutForm';
 const TAX_RATE = .11;
 // eslint-disable-next-line no-undef
@@ -20,8 +20,7 @@ class Payment extends React.Component {
         this.scrollElement = React.createRef();
 
         this.state = {
-            product: { name: 'Campsite', price: 1 },
-            popupShow: false
+            product: {name:'Campsite', price: 1}
         }
     }
 
@@ -29,7 +28,7 @@ class Payment extends React.Component {
         if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
             this.props.fetchAvailability(this.props.formData.checkin, this.props.formData.checkout);
         }
-        
+       
         const subTotal = this.props.availability.numberOfNights * this.props.formData.selectedSite.price || 0
         const taxes = subTotal * TAX_RATE || 0;
 
@@ -41,11 +40,8 @@ class Payment extends React.Component {
             totalPrice: subTotal + taxes,
             subTotal,
             taxes,
-            checkin: this.props.formData.checkin || '',
-            checkout: this.props.formData.checkout || '',
-            email: this.props.formData.email || '',
-            phone: this.props.formData.phone || '',
-            name: this.props.formData.name || ''
+            startDate: this.props.formData.checkin || '',
+            endDate: this.props.formData.checkout || '',
         });
 
         // window.addEventListener('scroll', this.handleScroll);
@@ -58,37 +54,11 @@ class Payment extends React.Component {
         // console.log(list);
         // node.addEventListener('scroll', this.handleScroll.bind(this))
         // node.addEventListener("scroll", this.handleScroll);
-      
+     
     }
 
     componentDidUpdate() {
-        if (this.props.paymentData.status === 'success') {
-            if (!this.state.popupShow) {
-                this.setState({ popupShow: true })
-            } 
-        }
-    }
-
-    clearPaymentData() {
-        this.setState({ popupShow: false });
-        this.props.clearPaymentData();
-        this.props.history.push('/');
-        this.props.setFormDataItem({
-            alert: {},
-            adults: 0,
-            kids: 0,
-            pets: 0,
-            totalPrice: 0,
-            subTotal: 0,
-            taxes: 0,
-            checkin: '',
-            checkout: '',
-            email: '',
-            phone: '',
-            name: ''
-        });
-
-       // should this show reservation details or redirect to home?
+        console.log(this.props.availability);
     }
 
     handleScroll = (e) => {
@@ -100,7 +70,7 @@ class Payment extends React.Component {
         console.log(position);
         // console.log(target.scrollX);
         // console.log(target.scrollY)
-      
+     
         return useWindow
           ? { x: window.scrollX, y: window.scrollY }
           : { x: position.left, y: position.top }
@@ -111,7 +81,7 @@ class Payment extends React.Component {
     }
 
     handleChange = (e, inputName) => {
-        this.props.setFormDataItem({[inputName]: e.target.value}); 
+        this.props.setFormDataItem({[inputName]: e.target.value});
     }
 
     handlePaymentUpdate = (e, inputName) => {
@@ -124,89 +94,70 @@ class Payment extends React.Component {
         }
     }
 
-    displayAlert = (formItemName) => {
-        if (Object.keys(this.props.formData).length !== 0) {
-            if (this.props.formData.alert[formItemName] !== undefined) {
-                return (
-                    <p className={this.props.formData.alert[formItemName] ? 'error-message' : 'hidden'}>{this.props.formData.alert[formItemName]}</p> 
-                )
-            }
-        }
-    }
-
     render() {
         return (
-            <div className="container-fluid payment-page" id="scrollElement"  ref={this.scrollElement}>
+            <div className="container-fluid" id="scrollElement"  ref={this.scrollElement}>
                 <div className="row">
-                    <div className="col-lg-6 section-left payment">
-                        <h4>Reservation Details</h4>
-                        {/* <p>Review reservation and enter payment info</p> */}
-                                <p><b>Site {this.props.formData.selectedSite.number}</b> </p> 
-                                <p>Checkin: {this.props.formData.checkin}</p>
-                                <p>Checkout: {this.props.formData.checkout}</p>
-                                <p>Number in party: {this.props.formData.guestDisplay}</p>
-                                <p>Campsite Type: {this.props.formData.unitType}</p>
-                                <Link to="/book">Edit Reservation</Link>
-
-                                <p><b>Number of Nights:</b> {this.props.availability.numberOfNights}</p>
-                                <p><b>Price:</b>{this.props.availability.numberOfNights * this.props.formData.selectedSite.price}</p>
-                                <p><b>Tax: <p><b>{this.props.formData.taxes}</b></p></b></p>
-                                <p><b>Amount Due: {this.props.formData.totalPrice}</b></p>
-                                <Link to="/cancellation">Cancellation Guidelines</Link>
-                                
-                                {/* <div className="reservation-details">
-                                    <h4>Lakeside Pines RV Park</h4>
-                                    <p>1645 E Highway 25, Dandridge, TN 37725</p>
-                                    <p>(832) 465-6700</p>
-                                </div> */}
+                    <div className="col-lg-7 section-left payment">
+                        <h3>Payment Details</h3>
+                        <p>Review reservation and enter payment info</p>
+                        <div className="row">
+                            <div className="col-lg-3">
+                                <p><b>Dates</b></p>
+                                <p>{this.props.formData.checkin}-{this.props.formData.checkout}</p>
+                            </div>
+                            <div className="col-lg-3">
+                                <p><b>Rates</b></p>
+                                <p>${this.props.formData.selectedSite.price}/ night</p>
+                            </div>
+                            <div className="col-lg-3">
+                                <p><b>Nights</b></p>
+                                <p>{this.props.availability.numberOfNights}</p>
+                                <p><b>Taxes</b></p>
+                                <p><b>Estimated Total</b></p>
+                                <p><b>Reservation Deposit</b></p>
+                                <p><b>Amount Due</b></p>
+                            </div> 
+                            <div className="col-lg-3">
+                                <p><b>Price</b></p>
+                                <p>{this.props.availability.numberOfNights * this.props.formData.selectedSite.price}</p>
+                                <p><b>{this.props.formData.taxes}</b></p>
+                                <p><b>{this.props.formData.totalPrice}</b></p> 
+                                <p><b></b></p>
+                                <p><b>Amount Due</b></p> 
+                            </div>
                         </div>
-                    <div className="col-lg-6 section-right details">
-                        <label>Name</label>
-                        {this.displayAlert('name')}
-                        <input 
-                            className="form-input form-control"
-                            type="name"
-                            key="name"
-                            placeholder="Name"
-                            value={this.props.formData.name}
-                            onChange={(e) => this.handleChange(e, 'name')} 
-                        />
-                        <label>Email Address</label>
-                        {this.displayAlert('email')}
-                        <input 
-                            className="form-input form-control"
-                            type="email"
-                            key="email"
-                            placeholder="Email Address"
-                            value={this.props.formData.email}
-                            onChange={(e) => this.handleChange(e, 'email')} 
-                        />
-                        {this.displayAlert('phone')}
-                        <label>Phone Number</label>
-                        <input 
-                            className="form-input form-control"
-                            type="phone"
-                            key="phone"
-                            placeholder="Phone Number"
-                            value={this.props.formData.phone}
-                            onChange={(e) => this.handleChange(e, 'phone')} 
-                        />
+                    </div>
+                    <div className="col-lg-5 section-right details">
+                        <div className="reservation-details">
+                            <h4>Lakeside Pines RV Park</h4>
+                            <p>1645 E Highway 25, Dandridge, TN 37725</p>
+                            <p>(832) 465-6700</p>
+                            <Link to="/cancellation">Cancellation Guidelines</Link>
+
+                            <h4>Reservation Details</h4>
+                            <p>Site {this.props.formData.selectedSite.number}</p> 
+                            <p>Checkin: {this.props.formData.checkin}</p>
+                            <p>Checkout: {this.props.formData.checkout}</p>
+                            <p>Number in party: {this.props.formData.guestDisplay}</p>
+                            <p>Campsite Type: {this.props.formData.unitType}</p>
+                           
+                            <Link to="/book">Edit Reservation</Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-lg-5 section-right details">
                         <Elements stripe={stripePromise}>
                             <CheckoutForm product={this.state.product} formData={this.props.formData}/>
                         </Elements>
                     </div>
                 </div>
-                <div className={this.state.popupShow ? 'popup' : 'hidden'}>
-                    <div className="popup-inner-table">
-                        <button className="material-icons table-close" onClick={() => this.clearPaymentData()}>X</button>
-                        <div className="title-container">
-                            <p>
-                                Thank you for your payment. We will email your receipt and reservation details.
-                            </p>
-                        </div>
+                <div className="row">
+                    <div className="col-lg-12">
+                        <button className="carousel-button blue longer"><Link to="/payment">Reserve &amp; Pay</Link></button>
                     </div>
                 </div>
-            
             </div>
         );
     };
@@ -222,4 +173,4 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 
-export default connect(mapStateToProps, {fetchAvailability, setFormDataItem, setPaymentDataItem, clearPaymentData}) (Payment);
+export default connect(mapStateToProps, {fetchAvailability, setFormDataItem, setPaymentDataItem}) (Payment);
