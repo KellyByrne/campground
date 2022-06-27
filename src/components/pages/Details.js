@@ -114,8 +114,8 @@ class Payment extends React.Component {
                             <p>Total Price: {this.props.formData.selectedSite.price * this.props.availability.numberOfNights}</p>
                             <p>Checkin: {this.props.formData.checkin}</p>
                             <p>Checkout: {this.props.formData.checkout}</p>
-                            <p>Number in party: {this.props.formData.guestDisplay}</p>
-                            <p>Campsite Type: {this.props.formData.unitType}</p>
+                            {/* <p>Number in party: {this.props.formData.guestDisplay}</p> */}
+                            {/* <p>Campsite Type: {this.props.formData.unitType}</p> */}
                             
                             <Link to="/book">Edit Reservation</Link>
                         </div>
