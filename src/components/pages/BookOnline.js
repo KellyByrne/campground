@@ -110,6 +110,8 @@ class BookOnline extends React.Component {
                     </div>
                 )
             }))
+        } else {
+            return <div>No sites available for this time frame</div>
         }
     }
 
@@ -151,10 +153,10 @@ class BookOnline extends React.Component {
                                 {/* <div><p>Change Booking Info</p></div> */}
                                 <DatePicker placeholder="Checkin" formItemName="checkin" containerClass={"form-group"} labelText="Checkin"/>
                                 <DatePicker placeholder="Checkout" formItemName="checkout" containerClass={"form-group"} labelText="Checkout"/>
-                                <GuestDropDown/>
+                                {/* <GuestDropDown/> */}
                                 <div>
                                     {this.displayAlert()}
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label className="form-label">Unit Type </label>
                                         <select 
                                             className="form-input form-control"
@@ -165,7 +167,7 @@ class BookOnline extends React.Component {
                                             <option>Select Unit Type</option>
                                             {this.generateUnitOptions()}
                                         </select>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <button className="carousel-button blue" onClick={() => this.update()}>Update</button>
                             </div>
