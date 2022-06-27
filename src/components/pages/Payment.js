@@ -11,7 +11,6 @@ const TAX_RATE = .11;
 // eslint-disable-next-line no-undef
 const stripePromise = loadStripe('pk_test_51IFU8YCfUXRmPJhQRA71KsskANdyQ4FRRSyyB0GfKBUwCaidq9f2tWEQFenKyZ9A6TltldDS60SyoKMYL7WaWOPz00LyMlDM1W');
 
-
 class Payment extends React.Component {
 
     constructor(props) {
@@ -108,23 +107,23 @@ class Payment extends React.Component {
                             </div>
                             <div className="col-lg-3">
                                 <p><b>Rates</b></p>
-                                <p>${this.props.formData.selectedSite.price}/ night</p>
+                                <p>${(this.props.formData.selectedSite.price.toFixed(2))}/ night</p>
                             </div>
                             <div className="col-lg-3">
                                 <p><b>Nights</b></p>
                                 <p>{this.props.availability.numberOfNights}</p>
-                                <p><b>Taxes</b></p>
-                                <p><b>Estimated Total</b></p>
-                                <p><b>Reservation Deposit</b></p>
-                                <p><b>Amount Due</b></p>
+                                <p><b>Taxes:</b></p>
+                                <p><b>Total Due:</b></p>
+                                {/* <p><b>Reservation Deposit</b></p> */}
+                                {/* <p><b>Amount Due</b></p> */}
                             </div> 
                             <div className="col-lg-3">
                                 <p><b>Price</b></p>
-                                <p>{this.props.availability.numberOfNights * this.props.formData.selectedSite.price}</p>
-                                <p><b>{this.props.formData.taxes}</b></p>
-                                <p><b>{this.props.formData.totalPrice}</b></p> 
-                                <p><b></b></p>
-                                <p><b>Amount Due</b></p> 
+                                <p>${(this.props.availability.numberOfNights * this.props.formData.selectedSite.price).toFixed(2)}</p>
+                                <p><b>${(this.props.formData.taxes).toFixed(2)}</b></p>
+                                <p><b>${(this.props.formData.totalPrice).toFixed(2)}</b></p> 
+                                {/* <p><b></b></p> */}
+                                {/* <p><b>Amount Due</b></p>  */}
                             </div>
                         </div>
                     </div>
