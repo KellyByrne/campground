@@ -19,7 +19,7 @@ class BookOnline extends React.Component {
             checkout: this.props.formData.checkout || new Date(localStorage.getItem('checkout')),
             // numberOfAcs: 0,
             // tentCamping: false,
-            showConfirmBtn: false
+            showConfirmBtn: {}
         };
     }
 
@@ -46,8 +46,7 @@ class BookOnline extends React.Component {
       
     }
 
-    componentDidUpdate() {
-    }
+    componentDidUpdate() {}
 
     handleScroll = (e) => {
         let useWindow;
@@ -74,11 +73,17 @@ class BookOnline extends React.Component {
         if (this.props.availability.availableSites !== undefined) {
             return (this.props.availability.availableSites.map((available, idx) => {
                 return (
-                    <div key={'site-' + idx} className="site" id={available.id} onClick={() => this.selectSite(available.id)}>
-                        <h4>Site {available.number}</h4>
-                        <p>Price per night: ${available.price}</p>
-                        <p>Number of nights: {this.props.availability.numberOfNights}</p>
-                        <p>Total Price: {available.price * this.props.availability.numberOfNights}</p>
+                    <div key={'site-' + idx}>
+                        <div className="site" id={available.id} onClick={() => this.selectSite(available.id)}>
+                            <h4>Site {available.number}</h4>
+                            <p>Price per night: ${available.price}</p>
+                            <p>Number of nights: {this.props.availability.numberOfNights}</p>
+                            <p>Total Price: {available.price * this.props.availability.numberOfNights}</p>
+                            <button className={this.state.showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}><Link to="/payment">Confirm &amp; Pay</Link></button>
+
+                        </div>
+                        {/* <div>
+                        </div> */}
                     </div>
                 )
             }))
@@ -97,7 +102,8 @@ class BookOnline extends React.Component {
         }
         element.style.borderColor = '#6FA9B4';
         element.style.borderWidth = '3px';
-        this.setState({ showConfirmBtn: true });
+        console.log('id', id);
+        this.setState({ showConfirmBtn: { [id]: true } });
 
         this.props.availability.availableSites.forEach(site => {
             if (site.id === id) {
@@ -142,11 +148,11 @@ class BookOnline extends React.Component {
                         <img alt="tree" src={sitemap}/>
                     </div>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                     <div className="col-12">
                         <button className={this.state.showConfirmBtn ? "carousel-button blue longer" : 'hide'}><Link to="/payment">Confirm &amp; Pay</Link></button>
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     };
