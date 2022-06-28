@@ -46,40 +46,22 @@ class Payment extends React.Component {
             phone: this.props.formData.phone
         });
 
-        // window.addEventListener('scroll', this.handleScroll);
-
-        // window.scrollTo(100, 0)
-
         const list = ReactDOM.findDOMNode(this.scrollElement.current);
-        // console.log(list);
         list.addEventListener('scroll', this.handleScroll());
-        // console.log(list);
-        // node.addEventListener('scroll', this.handleScroll.bind(this))
-        // node.addEventListener("scroll", this.handleScroll);
      
     }
 
     componentDidUpdate() {
-        // console.log(this.props.availability);
     }
 
     handleScroll = (e) => {
-        // console.log('scrolling');
-        // console.log(e.clientX);
         let useWindow;
         const target = document.getElementById('scrollElement')
         const position = target.getBoundingClientRect();
-        // console.log(position);
-        // console.log(target.scrollX);
-        // console.log(target.scrollY)
      
         return useWindow
           ? { x: window.scrollX, y: window.scrollY }
           : { x: position.left, y: position.top }
-    }
-
-    displayAlert = () => {
-
     }
 
     handleChange = (e, inputName) => {
@@ -199,11 +181,6 @@ class Payment extends React.Component {
                     <Elements stripe={stripePromise}>
                         <CheckoutForm product={this.state.product} formData={this.props.formData}/>
                     </Elements>
-                </div>
-                <div className="row">
-                    <div className="col-lg-12">
-                        <button className="carousel-button blue longer"><Link to="/payment">Reserve &amp; Pay</Link></button>
-                    </div>
                 </div>
             </div>
         );

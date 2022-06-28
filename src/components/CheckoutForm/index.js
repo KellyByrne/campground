@@ -53,8 +53,8 @@ class CheckoutForm extends React.Component {
       <div className="DemoWrapper">
         <form onSubmit={this.handleSubmit}>
           <CardSection />
-          <button disabled={!this.props.stripe} className='carousel-button blue longer'>
-            Reserve &amp; Pay
+          <button style={{float: 'left', marginBottom: '20px'}} disabled={!this.props.stripe} className='carousel-button blue longer'>
+            Submit Payment
           </button>
         </form>
       </div>
