@@ -121,10 +121,10 @@ class HomePage extends React.Component {
                 </div>
                 <section className="amenities">
                     <div className="row">
-                        <div className="col-lg-6 col-sm-12 photo-sc">
+                        <div className="photo-sc">
                             <img alt="tree" src={nighttrees}/>
                         </div>
-                        <div className="col-lg-6 col-sm-12 copy-sc">
+                        <div className="copy-sc">
                             <span className="amenity-tree"><img alt="tree" src={singletree}/></span>
                             <h3>Amenities </h3>
                             <ul>

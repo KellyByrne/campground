@@ -795,6 +795,10 @@ label.form-label {
         padding: 0;
     }
 
+    .amenities .row {
+        display: flex;
+    }
+
     .amenities .photo-sc img {
         height: auto;
         padding-top: 0;
