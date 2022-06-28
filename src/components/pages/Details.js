@@ -38,7 +38,7 @@ class Payment extends React.Component {
         // window.scrollTo(100, 0)
 
         const list = ReactDOM.findDOMNode(this.scrollElement.current);
-        console.log(list);
+        // console.log(list);
         list.addEventListener('scroll', this.handleScroll());
         // console.log(list);
         // node.addEventListener('scroll', this.handleScroll.bind(this))
@@ -47,16 +47,16 @@ class Payment extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log(this.props.availability);
+        // console.log(this.props.availability);
     }
 
     handleScroll = (e) => {
-        console.log('scrolling');
+        // console.log('scrolling');
         // console.log(e.clientX);
         let useWindow;
         const target = document.getElementById('scrollElement')
         const position = target.getBoundingClientRect();
-        console.log(position);
+        // console.log(position);
         // console.log(target.scrollX);
         // console.log(target.scrollY)
       
@@ -102,10 +102,10 @@ class Payment extends React.Component {
                     </div>
                     <div className="col-lg-5 section-right details">
                         <div className="reservation-details">
-                            <h4>Lakeside Pines RV Park</h4>
+                            {/* <h4>Lakeside Pines RV Park</h4>
                             <p>1645 E Highway 25, Dandridge, TN 37725</p>
-                            <p>(832) 465-6700</p>
-                            <Link to="/cancellation">Cancellation Guidelines</Link>
+                            <p>(832) 465-6700</p> */}
+                            {/* <Link to="/cancellation">Cancellation Guidelines</Link> */}
 
                             <h4>Reservation Details</h4>
                             <p>Site {this.props.formData.selectedSite.number}</p>

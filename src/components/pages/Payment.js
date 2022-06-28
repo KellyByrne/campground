@@ -60,16 +60,16 @@ class Payment extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log(this.props.availability);
+        // console.log(this.props.availability);
     }
 
     handleScroll = (e) => {
-        console.log('scrolling');
+        // console.log('scrolling');
         // console.log(e.clientX);
         let useWindow;
         const target = document.getElementById('scrollElement')
         const position = target.getBoundingClientRect();
-        console.log(position);
+        // console.log(position);
         // console.log(target.scrollX);
         // console.log(target.scrollY)
      
@@ -99,96 +99,106 @@ class Payment extends React.Component {
     render() {
         return (
             <div className="container-fluid" id="scrollElement"  ref={this.scrollElement}>
-                <div className="row">
-                    <div className="col-lg-7 section-left payment">
-                        <h3>Payment Details</h3>
-                        <p>Review reservation and enter payment info</p>
-                        <div className="row">
-                            <div className="col-lg-3">
-                                <p><b>Dates</b></p>
-                                <p>{this.props.formData.checkin}-{this.props.formData.checkout}</p>
+                <div className="col-lg-12">
+                    <form>
+                    <div><h3>Reservation Details</h3></div>
+                        <div className="form-group">
+                            <label className="form-label">Check-in </label>
+                            <input 
+                                className="form-input form-control"
+                                key="checkin"
+                                required
+                                disabled
+                                value={this.props.formData.checkin}
+                                />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Checkout </label>
+                            <input 
+                                className="form-input form-control"
+                                key="checkout"
+                                required
+                                disabled
+                                value={this.props.formData.checkout}
+                                />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Rate/Night</label>
+                            <input 
+                                className="form-input form-control"
+                                key="nightlyRate"
+                                required
+                                disabled
+                                value={(this.props.formData.selectedSite.price.toFixed(2))}
+                                />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Price </label>
+                            <input 
+                                className="form-input form-control"
+                                key="price"
+                                required
+                                disabled
+                                value={(this.props.availability.numberOfNights * this.props.formData.selectedSite.price).toFixed(2)}
+                                />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Taxes </label>
+                            <input 
+                                className="form-input form-control"
+                                key="taxes"
+                                required
+                                disabled
+                                value={(this.props.formData.taxes.toFixed(2))}
+                                />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Total ({this.props.availability.numberOfNights} nights)</label>
+                            <input 
+                                className="form-input form-control"
+                                key="total"
+                                required
+                                disabled
+                                value={(this.props.formData.totalPrice).toFixed(2)}
+                                />
+                        </div>
+                        <div>
+                            <div><h3>Payment Info</h3></div>
+                            <div className="form-group">
+                                <label className="form-label">Name </label>
+                                <input 
+                                    className="form-input form-control"
+                                    key="name"
+                                    required
+                                    value={this.props.formData.name}
+                                    onChange={(e) => {this.handleChange(e, 'name')}}
+                                    />
                             </div>
-                            <div className="col-lg-3">
-                                <p><b>Rates</b></p>
-                                <p>${(this.props.formData.selectedSite.price.toFixed(2))}/ night</p>
+                            <div className="form-group">
+                                <label className="form-label">Email </label>
+                                <input 
+                                    className="form-input form-control"
+                                    key="email"
+                                    required
+                                    value={this.props.formData.email}
+                                    onChange={(e) => {this.handleChange(e, 'email')}}
+                                    />
                             </div>
-                            <div className="col-lg-3">
-                                <p><b>Nights</b></p>
-                                <p>{this.props.availability.numberOfNights}</p>
-                                <p><b>Taxes:</b></p>
-                                <p><b>Total Due:</b></p>
-                                {/* <p><b>Reservation Deposit</b></p> */}
-                                {/* <p><b>Amount Due</b></p> */}
-                            </div> 
-                            <div className="col-lg-3">
-                                <p><b>Price</b></p>
-                                <p>${(this.props.availability.numberOfNights * this.props.formData.selectedSite.price).toFixed(2)}</p>
-                                <p><b>${(this.props.formData.taxes).toFixed(2)}</b></p>
-                                <p><b>${(this.props.formData.totalPrice).toFixed(2)}</b></p> 
-                                {/* <p><b></b></p> */}
-                                {/* <p><b>Amount Due</b></p>  */}
+                            <div className="form-group">
+                                <label className="form-label">Phone </label>
+                                <input 
+                                    className="form-input form-control"
+                                    key="phone"
+                                    required
+                                    value={this.props.formData.phone}
+                                    onChange={(e) => {this.handleChange(e, 'phone')}}
+                                    />
                             </div>
                         </div>
-                    </div>
-                    <div className="col-lg-5 section-right details">
-                        <div className="reservation-details">
-                            <h4>Lakeside Pines RV Park</h4>
-                            <p>1645 E Highway 25, Dandridge, TN 37725</p>
-                            <p>(832) 465-6700</p>
-                            <Link to="/cancellation">Cancellation Guidelines</Link>
-
-                            <h4>Reservation Details</h4>
-                            <p>Site {this.props.formData.selectedSite.number}</p> 
-                            <p>Checkin: {this.props.formData.checkin}</p>
-                            <p>Checkout: {this.props.formData.checkout}</p>
-                            {/* <p>Number in party: {this.props.formData.guestDisplay}</p> */}
-                            {/* <p>Campsite Type: {this.props.formData.unitType}</p> */}
-                           
-                            <Link to="/book">Edit Reservation</Link>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                        <div className="col-lg-12">
-                        <form>
-                            <div>
-                                <div><p>Booking Info</p></div>
-                                <div className="form-group">
-                                    <label className="form-label">Name </label>
-                                    <input 
-                                        className="form-input form-control"
-                                        key="name"
-                                        required
-                                        value={this.props.formData.name}
-                                        onChange={(e) => {this.handleChange(e, 'name')}}
-                                        />
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label">Email </label>
-                                    <input 
-                                        className="form-input form-control"
-                                        key="email"
-                                        required
-                                        value={this.props.formData.email}
-                                        onChange={(e) => {this.handleChange(e, 'email')}}
-                                        />
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label">Phone </label>
-                                    <input 
-                                        className="form-input form-control"
-                                        key="phone"
-                                        required
-                                        value={this.props.formData.phone}
-                                        onChange={(e) => {this.handleChange(e, 'phone')}}
-                                        />
-                                </div>
-                            </div>
-                            <Elements stripe={stripePromise}>
-                                <CheckoutForm product={this.state.product} formData={this.props.formData}/>
-                            </Elements>
-                        </form> 
-                    </div>
+                    </form>
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm product={this.state.product} formData={this.props.formData}/>
+                    </Elements>
                 </div>
                 <div className="row">
                     <div className="col-lg-12">

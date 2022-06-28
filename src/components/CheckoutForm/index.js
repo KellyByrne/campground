@@ -30,7 +30,7 @@ class CheckoutForm extends React.Component {
 
 
     event.preventDefault();
-    console.log(this.props);
+    // console.log(this.props);
 
     const { stripe, elements } = this.props;
     if (!stripe || !elements || (Object.keys(this.props.formData.alert).length >= 1)) {
@@ -40,10 +40,10 @@ class CheckoutForm extends React.Component {
     const card = elements.getElement(CardElement);
     const result = await stripe.createToken(card);
     if (result.error) {
-      console.log(result.error.message);
+      // console.log(result.error.message);
     } else {
       this.props.handleToken(result);
-      console.log(result.token);
+      // console.log(result.token);
     }
   };
 

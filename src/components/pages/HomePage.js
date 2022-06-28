@@ -6,8 +6,8 @@ import singletree from '../../images/CreativeMarket9-01.png';
 import nighttrees from '../../images/turqnight.JPG';
 import '../../style.css';
 import { fetchAvailability, setFormDataItem } from '../../_actions';
-import DatePicker from '../DatePicker';
-// import GuestDropDown from '../GuestDropDown';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -16,27 +16,27 @@ class HomePage extends React.Component {
         this.scrollElement = React.createRef();
 
         this.state = {
-          date: new Date(new Date().setHours(0,0,0,0)), // + (3600 * 1000 * 24)),
-          unitTypes: [
-            {value: "motorhome" , name: "Motorhome"},
-            {value: "motorhome-towing" , name: "Motorhome Towing"},
-            {value: "fifth-wheel" , name: "Fifth Wheel"},
-            {value: "tent-trailer" , name: "Tent Trailer"},
-            {value: "travel-trailer" , name: "Travel Trailer"},
-            {value: "pickup-camper" , name: "Pickup Camper"},
-            {value: "van" , name: "Van"},
-            {value: "automobile" , name: "Automobile"},
-            {value: "bike-motorcycle" , name: "Bike/Motorcycle"},
-            {value: "tent" , name: "Tent"},
-            {value: "other" , name: "Other"},
-            {value: "storage" , name: "Storage"},
-            {value: "toy-hauler" , name: "Toy Hauler"},
-         ]
+          checkin: new Date(new Date().setHours(0,0,0,0)),
+          checkout: null,
+        //   unitTypes: [
+        //     {value: "motorhome" , name: "Motorhome"},
+        //     {value: "motorhome-towing" , name: "Motorhome Towing"},
+        //     {value: "fifth-wheel" , name: "Fifth Wheel"},
+        //     {value: "tent-trailer" , name: "Tent Trailer"},
+        //     {value: "travel-trailer" , name: "Travel Trailer"},
+        //     {value: "pickup-camper" , name: "Pickup Camper"},
+        //     {value: "van" , name: "Van"},
+        //     {value: "automobile" , name: "Automobile"},
+        //     {value: "bike-motorcycle" , name: "Bike/Motorcycle"},
+        //     {value: "tent" , name: "Tent"},
+        //     {value: "other" , name: "Other"},
+        //     {value: "storage" , name: "Storage"},
+        //     {value: "toy-hauler" , name: "Toy Hauler"},
+        //  ]
         };
     }
 
     componentDidMount() {
-
         this.props.fetchAvailability();
 
         this.props.setFormDataItem({
@@ -47,61 +47,44 @@ class HomePage extends React.Component {
             totalPrice: 0,
             subTotal: 0,
             taxes: 0,
-            checkin: '',
+            checkin: new Date(new Date().setHours(0,0,0,0)),
             checkout: ''
         });
 
-        // window.addEventListener('scroll', this.handleScroll);
-
-        // window.scrollTo(100, 0)
-
         const list = ReactDOM.findDOMNode(this.scrollElement.current);
-        console.log(list);
         list.addEventListener('scroll', this.handleScroll());
-        // console.log(list);
-        // node.addEventListener('scroll', this.handleScroll.bind(this))
-        // node.addEventListener("scroll", this.handleScroll);
-      
     }
 
 
     handleScroll = (e) => {
-        console.log('scrolling');
-        // console.log(e.clientX);
         let useWindow;
         const target = document.getElementById('scrollElement')
         const position = target.getBoundingClientRect();
-        console.log(position);
-        // console.log(target.scrollX);
-        // console.log(target.scrollY)
       
         return useWindow
           ? { x: window.scrollX, y: window.scrollY }
           : { x: position.left, y: position.top }
     }
 
-    logit = () => {
-        console.log(this.props.availability);
-        console.log(this.props.formData);
+    setCheckin(date) {
+        this.props.formData.checkin = date;
+        this.setState(({checkin: date}));
+        localStorage.setItem('checkin', date);
     }
 
-    displayAlert = () => {
+    setCheckout(date) {
+        this.props.formData.checkout = date;
+        this.setState(({checkout: date}));
+        localStorage.setItem('checkout', date);
+    }
+
+    callNow = () => {
 
     }
 
-    handleChange = (e, inputName) => {
-        this.props.setFormDataItem({[inputName]: e.target.value}); 
-    }
-
-    generateUnitOptions = () => {
-        if (Object.keys(this.props.formData).length !== 0) {
-            return (this.state.unitTypes.map(option => {
-                return (
-                    <option value={option.value}>{option.name}</option>
-                )
-            }))
-        }
-    }
+    // handleChange = (e, inputName) => {
+    //     this.props.setFormDataItem({[inputName]: e.target.value}); 
+    // }
 
     render() {
         return (
@@ -114,7 +97,7 @@ class HomePage extends React.Component {
                             <div className="box">
                                 <h2>Private, Shaded 30/50 Amp Sites</h2>
                                 <p>Looking for a lakeside campsite for your stay in Dandridge, TN? Book a shaded spot at Lakeside Pines and enjoy the natural beauty of Douglas Lake surrounded by trees as well as our indoor pool and clean bathrooms. <br/> <br/> Questions?</p> 
-                                <Link to="/" className="carousel-button blue" onClick={this.logit}>CALL NOW</Link>
+                                <Link to="/" className="carousel-button blue" onClick={this.callNow}>CALL NOW</Link>
                             </div>
                         </div>
                     </div>
@@ -123,26 +106,15 @@ class HomePage extends React.Component {
                     <div className="col-lg-12 col-sm-12">
                         <form>
                             <div className="booking-strip">
-                                <div><p>Booking Info</p></div>
-                                <DatePicker placeholder="Checkin" minDate={this.state.date} formItemName="checkin" containerClass={"form-group"} labelText="Checkin"/>
-                                <DatePicker placeholder="Checkout" minDate={this.state.date} formItemName="checkout" containerClass={"form-group"} labelText="Checkout"/>
-                                {/* <GuestDropDown/> */}
-                                {/* <div>
-                                    {this.displayAlert()}
-                                    <div className="form-group">
-                                        <label className="form-label">Unit Type </label>
-                                        <select 
-                                            className="form-input form-control"
-                                            key="unitType"
-                                            value={this.props.formData.unitType}
-                                            onChange={(e) => {this.handleChange(e, 'unitType')}}
-                                        >
-                                            <option>Select Unit Type</option>
-                                            {this.generateUnitOptions()}
-                                        </select>
-                                    </div>
-                                </div> */}
-                                <button className="carousel-button blue"><Link to="/book">Book Online</Link></button>
+                            <div className="form-group">
+                                <label className="form-label">Checkin </label>
+                                <DatePicker selected={this.state.checkin} onChange={(date) => this.setCheckin(date)} />
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label">Checkout </label>
+                                <DatePicker selected={this.state.checkout} onChange={(date) => this.setCheckout(date)} />
+                            </div>
+                            <button className="carousel-button blue"><Link to="/book">Book Now</Link></button>
                             </div>
                         </form> 
                     </div>

@@ -15,7 +15,7 @@ class Header extends React.Component {
     }
 
     makeActive = () => {
-        console.log(this.state.isActive);
+        // console.log(this.state.isActive);
         if (this.state.isActive) {
             this.setState({isActive: false})
         } else {

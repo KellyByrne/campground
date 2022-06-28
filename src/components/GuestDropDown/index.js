@@ -39,12 +39,12 @@ class GuestDropDown extends React.Component {
         } else {
             amount -= 1;
         }
-        console.log(amount, inputName, action);
+        // console.log(amount, inputName, action);
         this.props.setFormDataItem({[inputName]: amount }); 
     }
 
     displayAlert = () => {
-        console.log(this.props.formData);
+        // console.log(this.props.formData);
         if (Object.keys(this.props.formData).length !== 0) {
             if (this.props.formData.alert[this.props.formItemName] !== undefined) {
                 return (

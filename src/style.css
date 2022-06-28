@@ -171,6 +171,11 @@ body {font-family: 'Lato' !important;}
 .copy-sc ul {list-style:none;padding:0;}
 .copy-sc ul li {font-family:'Lato';font-weight:300 !important;font-size:18px;}
 
+
+.react-datepicker__input-container > input {
+    width: 90%;
+}
+
 .btn-blue {
     background-color: #6FA9B4 !important;
     color: #fff !important;
