@@ -15,8 +15,8 @@ class BookOnline extends React.Component {
         this.scrollElement = React.createRef();
 
         this.state = {
-            checkin: '',
-            checkout: '',
+            checkin: this.props.formData.checkin || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkin')) : new Date(new Date().setHours(0,0,0,0)),
+            checkout: this.props.formData.checkout || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkout')) : new Date(localStorage.getItem('cehckout')),
             // numberOfACs: 0,
             // tentCamping: false,
             showConfirmBtn: {}
@@ -26,11 +26,11 @@ class BookOnline extends React.Component {
     componentDidMount() {
         if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
             this.props.fetchAvailability(this.props.formData.checkin, this.props.formData.checkout);
-            this.setState({
-                ...this.state,
-                checkin: this.props.formData.checkin || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkin')) : new Date(new Date().setHours(0,0,0,0)),
-                checkout: this.props.formData.checkout || new Date(localStorage.getItem('checkout')),
-            })
+            // this.setState({
+            //     ...this.state,
+            //     checkin: this.props.formData.checkin || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkin')) : new Date(new Date().setHours(0,0,0,0)),
+            //     checkout: this.props.formData.checkout || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkout')) : new Date(localStorage.getItem('cehckout')),
+            // })
         }
         
 
@@ -107,7 +107,7 @@ class BookOnline extends React.Component {
         }
         element.style.borderColor = '#6FA9B4';
         element.style.borderWidth = '3px';
-        console.log('id', id);
+
         this.setState({ showConfirmBtn: { [id]: true } });
 
         this.props.availability.availableSites.forEach(site => {
@@ -122,7 +122,9 @@ class BookOnline extends React.Component {
     }
 
     getAvailableSites = () => {
-        this.props.fetchAvailability(this.state.checkin, this.state.checkout);
+        if (this.state.checkin !== '' && this.state.checkout !== '') {
+            this.props.fetchAvailability(this.state.checkin, this.state.checkout);
+        }
     }
 
     render() {
