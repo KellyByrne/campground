@@ -108,8 +108,7 @@ class HomePage extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-lg-12 col-sm-12">
-                        <form>
-                            <div className="booking-strip">
+                        <div className="booking-strip">
                             <div className="form-group">
                                 <label className="form-label">Checkin </label>
                                 <DatePicker selected={this.state.checkin} onChange={(date) => this.setCheckin(date)} />
@@ -119,8 +118,7 @@ class HomePage extends React.Component {
                                 <DatePicker selected={this.state.checkout} onChange={(date) => this.setCheckout(date)} />
                             </div>
                             <button className="carousel-button blue"><Link to="/book">Book Now</Link></button>
-                            </div>
-                        </form> 
+                        </div>
                     </div>
                 </div>
                 <section className="amenities">

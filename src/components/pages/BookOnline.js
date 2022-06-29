@@ -128,19 +128,18 @@ class BookOnline extends React.Component {
     render() {
         return (
             <div className="container-fluid" id="scrollElement"  ref={this.scrollElement}>
-                <form>
-                    <div className="booking-strip">
-                        <div className="form-group">
-                            <label className="form-label">Checkin </label>
-                            <DatePicker selected={this.state.checkin} onChange={(date) => this.setCheckin(date)} />
-                        </div>
-                        <div className="form-group">
-                            <label className="form-label">Checkout </label>
-                            <DatePicker selected={this.state.checkout} onChange={(date) => this.setCheckout(date)} />
-                        </div>
-                        <button className="carousel-button blue" onClick={() => this.getAvailableSites()}>Update</button>
-                        </div>
-                    </form> 
+                <div className="booking-strip">
+                    <div className="form-group">
+                        <label className="form-label">Checkin </label>
+                        <DatePicker selected={this.state.checkin} onChange={(date) => this.setCheckin(date)} />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Checkout </label>
+                        <DatePicker selected={this.state.checkout} onChange={(date) => this.setCheckout(date)} />
+                    </div>
+                    <button className="carousel-button blue" onClick={() => this.getAvailableSites()}>Update</button>
+                </div>
+
                 <div className="row">
                     <div className="col-lg-6 section-left available-sites">
                         <h3>Available Sites</h3>
