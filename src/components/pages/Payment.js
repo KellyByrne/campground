@@ -84,7 +84,7 @@ class Payment extends React.Component {
         return (
             <div className="container-fluid" id="scrollElement"  ref={this.scrollElement}>
                 <div className="col-lg-12">
-                    <form>
+                    <form className="payment-form">
                     <div><h3>Reservation Details</h3></div>
                         <div className="form-group">
                             <label className="form-label">Check-in </label>
@@ -180,9 +180,11 @@ class Payment extends React.Component {
                             </div>
                         </div>
                     </form>
-                    <Elements stripe={stripePromise}>
-                        <CheckoutForm product={this.state.product} formData={this.props.formData}/>
-                    </Elements>
+                    <div className="payment-form">
+                        <Elements stripe={stripePromise}>
+                            <CheckoutForm product={this.state.product} formData={this.props.formData}/>
+                        </Elements>
+                    </div>
                 </div>
             </div>
         );

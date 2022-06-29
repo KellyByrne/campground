@@ -91,7 +91,7 @@ class BookOnline extends React.Component {
                 )
             }))
         } else {
-            return <div>No sites available for this time frame</div>
+            return <div className="no-sites-text">No sites available for this time frame</div>
         }
     }
 
@@ -127,7 +127,7 @@ class BookOnline extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid" id="scrollElement"  ref={this.scrollElement}>
+            <div className="container-fluid" id="scrollElement" ref={this.scrollElement}>
                 <div className="booking-strip">
                     <div className="form-group">
                         <label className="form-label">Checkin </label>
@@ -140,14 +140,14 @@ class BookOnline extends React.Component {
                     <button className="carousel-button blue" onClick={() => this.getAvailableSites()}>Update</button>
                 </div>
 
-                <div className="row">
+                <div className="row available-sites-with-map">
                     <div className="col-lg-6 section-left available-sites">
                         <h3>Available Sites</h3>
                         {this.generateAvailableSites()}
                     </div>
                     <div className="col-lg-6 section-right sitemap">
                         <h3>Site Map</h3>
-                        <img alt="tree" src={sitemap}/>
+                        <img width="100%" alt="tree" src={sitemap}/>
                     </div>
                 </div>
             </div>

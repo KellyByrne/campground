@@ -29,6 +29,24 @@ body {font-family: 'Lato' !important;}
     margin-bottom: 0;
 }
 
+.available-sites-with-map {
+    display: flex;
+    padding-left: 100px !important;
+}
+
+.payment-form {
+    padding-left: 100px !important;
+}
+
+/* for payment page headers */
+.payment-form h3 {
+    margin-top: 30px;
+}
+
+.no-sites-text {
+    text-align: center;
+}
+
 .payment-page label {
     color:#000;
     font-weight: 400 !important;
@@ -322,12 +340,12 @@ p.copy {
 }
 
 .section-left {
-    padding-left: 100px !important;
+    /* padding-left: 100px !important; */
     padding-top:50px;
 }
 
 .section-right {
-    padding-right: 100px !important;
+    /* padding-right: 100px !important; */
     padding-top:50px;
 }
 
