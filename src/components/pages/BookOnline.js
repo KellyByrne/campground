@@ -84,6 +84,7 @@ class BookOnline extends React.Component {
                             <p>Price per night: ${available.price}</p>
                             <p>Number of nights: {this.props.availability.numberOfNights}</p>
                             <p>Total Price: ${available.price * this.props.availability.numberOfNights}</p>
+                            {/* <div className={!this.state.showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}>Click to Select Site</div> */}
                             <button className={this.state.showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}><Link to="/payment">Confirm &amp; Pay</Link></button>
 
                         </div>
