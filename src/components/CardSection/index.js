@@ -1,5 +1,5 @@
 import React from "react";
-import { CardElement, PaymentElement, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
+import { CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
 
 const CARD_ELEMENT_OPTIONS = {
   style: {

@@ -3,8 +3,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-// import StripeCheckout from 'react-stripe-checkout';
 import { fetchAvailability, setFormDataItem, setPaymentDataItem } from '../../_actions';
 import CheckoutForm from '../CheckoutForm';
 const TAX_RATE = .11;

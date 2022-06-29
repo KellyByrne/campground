@@ -1,4 +1,4 @@
-import { CardElement, CardNumberElement, ElementsConsumer } from "@stripe/react-stripe-js";
+import { CardNumberElement, ElementsConsumer } from "@stripe/react-stripe-js";
 import React from "react";
 import { connect } from 'react-redux';
 import { handleToken, setFormDataItem } from "../../_actions";
