@@ -1,4 +1,4 @@
-import { CardElement, ElementsConsumer } from "@stripe/react-stripe-js";
+import { CardElement, CardNumberElement, ElementsConsumer } from "@stripe/react-stripe-js";
 import React from "react";
 import { connect } from 'react-redux';
 import { handleToken, setFormDataItem } from "../../_actions";
@@ -37,7 +37,7 @@ class CheckoutForm extends React.Component {
       return;
     }
 
-    const card = elements.getElement(CardElement);
+    const card = elements.getElement(CardNumberElement);
     const result = await stripe.createToken(card);
     if (result.error) {
       // console.log(result.error.message);
