@@ -110,8 +110,8 @@ class Payment extends React.Component {
                             <h4>Reservation Details</h4>
                             <p>Site {this.props.formData.selectedSite.number}</p>
                             <p>Number of Nights: {this.props.availability.numberOfNights}</p>
-                            <p>Price per night: {this.props.formData.selectedSite.price}</p>
-                            <p>Total Price: {this.props.formData.selectedSite.price * this.props.availability.numberOfNights}</p>
+                            <p>Price per night: ${this.props.formData.selectedSite.price}</p>
+                            <p>Total Price: ${this.props.formData.selectedSite.price * this.props.availability.numberOfNights}</p>
                             <p>Checkin: {this.props.formData.checkin}</p>
                             <p>Checkout: {this.props.formData.checkout}</p>
                             {/* <p>Number in party: {this.props.formData.guestDisplay}</p> */}

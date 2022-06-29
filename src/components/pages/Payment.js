@@ -21,6 +21,8 @@ class Payment extends React.Component {
         this.state = {
             product: {name:'Campsite', price: 1}
         }
+
+        // console.log('props', props);
     }
 
     componentDidMount() {
@@ -39,8 +41,8 @@ class Payment extends React.Component {
             totalPrice: subTotal + taxes,
             subTotal,
             taxes,
-            startDate: this.props.formData.checkin || '',
-            endDate: this.props.formData.checkout || '',
+            startDate: new Date(this.props.formData.checkin).toLocaleDateString('en-US') || '',
+            endDate: new Date(this.props.formData.checkout).toLocaleDateString('en-US') || '',
             name: this.props.formData.name,
             email: this.props.formData.email,
             phone: this.props.formData.phone
@@ -91,7 +93,7 @@ class Payment extends React.Component {
                                 key="checkin"
                                 required
                                 disabled
-                                value={this.props.formData.checkin}
+                                value={new Date(this.props.formData.checkin).toLocaleDateString('en-US')}
                                 />
                         </div>
                         <div className="form-group">
@@ -101,7 +103,7 @@ class Payment extends React.Component {
                                 key="checkout"
                                 required
                                 disabled
-                                value={this.props.formData.checkout}
+                                value={new Date(this.props.formData.checkout).toLocaleDateString('en-US')}
                                 />
                         </div>
                         <div className="form-group">

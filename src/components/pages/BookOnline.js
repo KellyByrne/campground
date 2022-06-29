@@ -42,8 +42,8 @@ class BookOnline extends React.Component {
             totalPrice: 0,
             subTotal: 0,
             taxes: 0,
-            checkin: this.props.formData.checkin || '',
-            checkout: this.props.formData.checkout || ''
+            checkin: this.state.checkin || '',
+            checkout: this.state.checkout || ''
         });
 
         const list = ReactDOM.findDOMNode(this.scrollElement.current);
@@ -83,12 +83,10 @@ class BookOnline extends React.Component {
                             <h4>Site {available.number}</h4>
                             <p>Price per night: ${available.price}</p>
                             <p>Number of nights: {this.props.availability.numberOfNights}</p>
-                            <p>Total Price: {available.price * this.props.availability.numberOfNights}</p>
+                            <p>Total Price: ${available.price * this.props.availability.numberOfNights}</p>
                             <button className={this.state.showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}><Link to="/payment">Confirm &amp; Pay</Link></button>
 
                         </div>
-                        {/* <div>
-                        </div> */}
                     </div>
                 )
             }))
