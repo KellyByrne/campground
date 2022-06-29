@@ -13,10 +13,14 @@ class HomePage extends React.Component {
     constructor(props) {
         super(props);
 
+        this.today = new Date(new Date().setHours(0,0,0,0));
+
+        localStorage.setItem('checkin', this.today);
+
         this.scrollElement = React.createRef();
 
         this.state = {
-          checkin: new Date(new Date().setHours(0,0,0,0)),
+          checkin: this.today,
           checkout: null,
         //   unitTypes: [
         //     {value: "motorhome" , name: "Motorhome"},
@@ -47,7 +51,7 @@ class HomePage extends React.Component {
             totalPrice: 0,
             subTotal: 0,
             taxes: 0,
-            checkin: new Date(new Date().setHours(0,0,0,0)),
+            checkin: this.today,
             checkout: ''
         });
 

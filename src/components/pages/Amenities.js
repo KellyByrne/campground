@@ -14,11 +14,10 @@ class Amenities extends React.Component {
     render() {
         return (
             <div className="circle-icon">
-                {/* <h1>Amenities</h1> */}
-                <div class="outer">
-                    <div class="inner rotate">
+                <div className="outer">
+                    <div className="inner rotate">
                         <h1>Amenities</h1>
-                        <div class="blue-highlight"></div>
+                        <div className="blue-highlight"></div>
                     </div>
                 </div>
                 <div className="row">

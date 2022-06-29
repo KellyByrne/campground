@@ -15,9 +15,9 @@ class BookOnline extends React.Component {
         this.scrollElement = React.createRef();
 
         this.state = {
-            checkin: this.props.formData.checkin || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkin')) : new Date(new Date().setHours(0,0,0,0)),
-            checkout: this.props.formData.checkout || new Date(localStorage.getItem('checkout')),
-            // numberOfAcs: 0,
+            checkin: '',
+            checkout: '',
+            // numberOfACs: 0,
             // tentCamping: false,
             showConfirmBtn: {}
         };
@@ -26,6 +26,11 @@ class BookOnline extends React.Component {
     componentDidMount() {
         if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
             this.props.fetchAvailability(this.props.formData.checkin, this.props.formData.checkout);
+            this.setState({
+                ...this.state,
+                checkin: this.props.formData.checkin || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkin')) : new Date(new Date().setHours(0,0,0,0)),
+                checkout: this.props.formData.checkout || new Date(localStorage.getItem('checkout')),
+            })
         }
         
 
@@ -37,8 +42,8 @@ class BookOnline extends React.Component {
             totalPrice: 0,
             subTotal: 0,
             taxes: 0,
-            checkin: this.state.checkin || '',
-            checkout: this.state.checkout || ''
+            checkin: this.props.formData.checkin || '',
+            checkout: this.props.formData.checkout || ''
         });
 
         const list = ReactDOM.findDOMNode(this.scrollElement.current);
@@ -116,10 +121,8 @@ class BookOnline extends React.Component {
         this.props.setFormDataItem({[inputName]: e.target.value}); 
     }
 
-    update = () => {
-        if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
-            this.props.fetchAvailability(this.props.formData.checkin, this.props.formData.checkout);
-        }
+    getAvailableSites = () => {
+        this.props.fetchAvailability(this.state.checkin, this.state.checkout);
     }
 
     render() {
@@ -135,7 +138,7 @@ class BookOnline extends React.Component {
                             <label className="form-label">Checkout </label>
                             <DatePicker selected={this.state.checkout} onChange={(date) => this.setCheckout(date)} />
                         </div>
-                        <button className="carousel-button blue" onClick={() => this.update()}>Update</button>
+                        <button className="carousel-button blue" onClick={() => this.getAvailableSites()}>Update</button>
                         </div>
                     </form> 
                 <div className="row">
@@ -148,11 +151,6 @@ class BookOnline extends React.Component {
                         <img alt="tree" src={sitemap}/>
                     </div>
                 </div>
-                {/* <div className="row">
-                    <div className="col-12">
-                        <button className={this.state.showConfirmBtn ? "carousel-button blue longer" : 'hide'}><Link to="/payment">Confirm &amp; Pay</Link></button>
-                    </div>
-                </div> */}
             </div>
         );
     };
