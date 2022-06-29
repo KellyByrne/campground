@@ -31,11 +31,11 @@ body {font-family: 'Lato' !important;}
 
 .available-sites-with-map {
     display: flex;
-    padding-left: 100px !important;
+    padding-left: 50px !important;
 }
 
 .payment-form {
-    padding-left: 100px !important;
+    padding-left: 50px !important;
 }
 
 /* for payment page headers */

@@ -181,9 +181,11 @@ class Payment extends React.Component {
                         </div>
                     </form>
                     <div className="payment-form">
+                    <div className="form-group">
                         <Elements stripe={stripePromise}>
                             <CheckoutForm product={this.state.product} formData={this.props.formData}/>
                         </Elements>
+                    </div>
                     </div>
                 </div>
             </div>
