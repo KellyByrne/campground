@@ -3,8 +3,14 @@ import React from 'react';
 class Rates extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Rates</h1>
+            <div className="circle-icon">
+                 <div className="outer">
+                    <div className="inner rotate">
+                        <h1>Rates</h1>
+                        <div className="blue-highlight"></div>
+                    </div>
+                </div>
+                <div style={{paddingTop:'40px'}} class="col-lg-12">
                 <h3>RV Sites</h3>
                 Sun - Wednesday
                     1 AC: 50
@@ -18,6 +24,8 @@ class Rates extends React.Component {
 
                 <h3>Tent Sites</h3>
                 $30/night
+                </div>
+
             </div>
         );
     };
