@@ -58,7 +58,7 @@ class Amenities extends React.Component {
                     <div className="circle-container col-lg-4 col-sm-12">
                         <div className="circle"><img alt="tree" src={scenictrees}/></div>
                             <h4>Full Camper Hookups</h4>
-                            <p>40/50 amp hookups, water, sewage </p>
+                            <p>30/50 amp hookups, water, sewage </p>
                     </div>
                     <div className="circle-container col-lg-4 col-sm-12">
                         <div className="circle"><img alt="tree" src={tentandwater}/></div>
@@ -68,7 +68,7 @@ class Amenities extends React.Component {
                     <div className="circle-container col-lg-4 col-sm-12">
                         <div className="circle"><img alt="tree" src={map}/></div>
                             <h4>Prime Location</h4>
-                            <p>Lakeside Pines is located 30 minutes from Sevierville and Knoxville, 40 from Pigeon Forge, and about an hour to Gatlinburg and Smoky Mountain National Park</p>
+                            <p>Lakeside Pines is located 30 minutes from Smoky Mountains National Park, Gatlinburg, Sevierville, Knoxville and Pigeon Forge</p>
                     </div>
                 </div>
                 <div className="row">
