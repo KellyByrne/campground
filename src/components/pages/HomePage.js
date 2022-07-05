@@ -102,9 +102,10 @@ class HomePage extends React.Component {
                                 <h2>New Lakeside RV and Tent Sites</h2>
                                 <div>
                                 <ul style={{'listStyleType': 'none', 'marginLeft': '-40px', 'textAlign': 'center', 'fontStyle': 'italic'}}>
-                                    <li>Natural beauty and quiet on Douglas Lake</li><br></br>
-                                    <li>Indoor pool and water activities</li> <br></br>
-                                    <li>Clean and private bathroom and showers</li> 
+                                    <li>Indoor Pool and Hot Tub</li> <br></br>
+                                    <li>Paddleboard, Kayak, Canoe Rental</li> <br></br>
+                                    <li>Clean and Private bathroom and showers</li><br></br>
+                                    <li>Natural Beauty and quiet on Douglas Lake</li><br></br>
                                     </ul>
                                     <Link to="/" className="carousel-button blue" onClick={this.callNow}>CALL NOW</Link>
                                 </div>
