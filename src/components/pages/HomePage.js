@@ -99,9 +99,15 @@ class HomePage extends React.Component {
                             <div className="overlay"></div>
                             <p className="message">Now Booking!</p>
                             <div className="box">
-                                <h2>Private, Shaded 30/50 Amp Sites</h2>
-                                <p>Looking for a lakeside campsite for your stay in Dandridge, TN? Book a shaded spot at Lakeside Pines and enjoy the natural beauty of Douglas Lake surrounded by trees as well as our indoor pool and clean bathrooms. <br/> <br/> Questions?</p> 
-                                <Link to="/" className="carousel-button blue" onClick={this.callNow}>CALL NOW</Link>
+                                <h2>New Lakeside RV and Tent Sites</h2>
+                                <div>
+                                <ul style={{'listStyleType': 'none', 'marginLeft': '-40px', 'textAlign': 'center', 'fontStyle': 'italic'}}>
+                                    <li>Natural beauty and quiet on Douglas Lake</li><br></br>
+                                    <li>Indoor pool and water activities</li> <br></br>
+                                    <li>Clean and private bathroom and showers</li> 
+                                    </ul>
+                                    <Link to="/" className="carousel-button blue" onClick={this.callNow}>CALL NOW</Link>
+                                </div>
                             </div>
                         </div>
                     </div>
