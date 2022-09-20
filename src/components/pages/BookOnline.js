@@ -13,10 +13,18 @@ class BookOnline extends React.Component {
         super(props);
 
         this.scrollElement = React.createRef();
+        this.today = new Date(new Date().setHours(0,0,0,0));
+        const tomorrow = new Date(this.today.getTime()  + 60 * 60 * 24 * 1000);
+        if (new Date(localStorage.getItem('checkout')) < tomorrow) {
+            this.props.formData.checkout = tomorrow;
+            this.setState(({checkout: tomorrow}));
+            localStorage.setItem('checkout', tomorrow);
+        }
 
+        // TODO: if checkout is less than tomorrow clear checkout
         this.state = {
             checkin: this.props.formData.checkin || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkin')) : new Date(new Date().setHours(0,0,0,0)),
-            checkout: this.props.formData.checkout || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkout')) : new Date(localStorage.getItem('cehckout')),
+            checkout: this.props.formData.checkout || localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkout')) : new Date(localStorage.getItem('checkout')),
             // numberOfACs: 0,
             // tentCamping: false,
             showConfirmBtn: {}
