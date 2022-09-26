@@ -1,7 +1,7 @@
 import React from 'react';
 // import {ConnectedRouter} from 'react-router-redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import configureStore from '../store';
 import Footer from './Footer';
 import Header from './Header';
@@ -25,16 +25,18 @@ const App = () => {
                 <Router>
                     <Header/>
                     <div>
-                        <Route path="/" exact component={HomePage}/>
-                        <Route path="/amenities"  component={Amenities}/> 
-                        <Route path="/rates"  component={Rates}/> 
-                        <Route path="/parkmap"  component={ParkMap}/> 
-                        <Route path="/attractions"  component={Attractions}/>
-                        <Route path="/gallery"  component={Gallery}/> 
-                        <Route path="/contactus"  component={ContactUs}/>   
-                        <Route path="/book" component={BookOnline} />  
-                        <Route path="/payment" component={Payment} />  
-                        <Route path="/details"  component={Details}/>  
+                        <Routes>
+                        <Route path="/" exact element={< HomePage />}/>
+                        <Route path="/amenities"  element={< Amenities />}/> 
+                        <Route path="/rates"  element={< Rates />}/> 
+                        <Route path="/parkmap"  element={< ParkMap />}/> 
+                        <Route path="/attractions"  element={< Attractions />}/>
+                        <Route path="/gallery"  element={< Gallery />}/> 
+                        <Route path="/contactus"  element={< ContactUs />}/>   
+                        <Route path="/book" element={< BookOnline />} />  
+                        <Route path="/payment/:id" element={< Payment />} />  
+                        <Route path="/details"  element={< Details />}/>  
+                        </Routes>
                     </div>
                     <Footer/>
                 </Router>

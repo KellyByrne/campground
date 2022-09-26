@@ -24,6 +24,7 @@ class CheckoutForm extends React.Component {
       if (this.props.formData.name === '') {
         alert['name'] = "Please enter a name"
       }
+
     }
 
     this.props.setFormDataItem({ alert })
@@ -42,7 +43,8 @@ class CheckoutForm extends React.Component {
     if (result.error) {
       // console.log(result.error.message);
     } else {
-      this.props.handleToken(result);
+      const paymentId = 1; // TODO: set this
+      this.props.handleToken(result, paymentId);
       // console.log(result.token);
     }
   };

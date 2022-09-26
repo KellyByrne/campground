@@ -41,7 +41,7 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchAvailability();
+        // this.props.fetchAvailability();
 
         this.props.setFormDataItem({
             alert: {},

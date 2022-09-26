@@ -28,7 +28,7 @@ class Payment extends React.Component {
             this.props.fetchAvailability(this.props.formData.checkin, this.props.formData.checkout);
         }
        
-        const subTotal = this.props.availability.numberOfNights * this.props.formData.selectedSite.price || 0
+        const subTotal = localStorage.getItem('lp-subtotal') || this.props.availability.numberOfNights * this.props.formData.selectedSite.price;
         const taxes = subTotal * TAX_RATE || 0;
 
         this.props.setFormDataItem({

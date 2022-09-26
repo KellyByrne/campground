@@ -1,4 +1,4 @@
-import data from '../apis/data';
+import axios from '../apis/data';
 import { dataConstants } from '../_constants';
 
 export const setPaymentDataItem = (data) => async (dispatch) => {
@@ -8,8 +8,13 @@ export const setPaymentDataItem = (data) => async (dispatch) => {
     });
 }
 
-export const handleToken = (result) => async (dispatch) => {
-    const response = await data.post('/payment', result );
+export const savePaymentData = (paymentData) => async (dispatch) => {
+    const response = await axios.post('/payment', paymentData );
+    dispatch({type: dataConstants.HANDLE_TOKEN, payload: response.data});
+}
+
+export const handleToken = (result, paymentId) => async (dispatch) => {
+    const response = await axios.put(`/payment/${paymentId}`, result );
     dispatch({type: dataConstants.HANDLE_TOKEN, payload: response.data});
 }
 

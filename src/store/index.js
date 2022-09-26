@@ -1,10 +1,11 @@
-import createHistory from 'history/createHashHistory';
 // import { createBrowserHistory as createHistory } from 'history';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 // import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import reducers from '../_reducers/index';
+
+const createHistory = require("history").createHashHistory;
 
 const history = createHistory();
 const routeMiddleware = routerMiddleware (history);
