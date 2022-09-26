@@ -1,51 +1,52 @@
 import { CardNumberElement, ElementsConsumer } from "@stripe/react-stripe-js";
 import React from "react";
-import { connect } from 'react-redux';
-import { handleToken, setFormDataItem } from "../../_actions";
 import CardSection from "../CardSection";
-
+import axios from '../../apis/data';
 
 class CheckoutForm extends React.Component {
   
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     
-    const alert = {};
-    const emailValidation = (/^\S+@\S+\.\S+$/);
-    // const phoneValidation = (/^\s*(?:\+?(\d{1,3}))?[-.(]*(\d{3})[-.)]*(\d{3})[-.]*(\d{4})(?:*x(\d+))?\s*$/);
-    if (Object.keys(this.props.formData).length !== 0) {
-      if (!emailValidation.test(this.props.formData.email) || this.props.formData.email === '' ) {
-          alert['email'] = "Please enter a valid email address"
-      } 
-      // if (!phoneValidation.test(this.props.formData.phone) || this.props.formData.phone === '') {
-      // //   alert['phone'] = "Please enter a valid phone number"
-      // }
+    // const alert = {};
+    // const emailValidation = (/^\S+@\S+\.\S+$/);
+    // // const phoneValidation = (/^\s*(?:\+?(\d{1,3}))?[-.(]*(\d{3})[-.)]*(\d{3})[-.]*(\d{4})(?:*x(\d+))?\s*$/);
+    // if (Object.keys(this.props.bookingData).length !== 0) {
+    //   if (!emailValidation.test(this.props.bookingData.email) || this.props.bookingData.email === '' ) {
+    //       alert['email'] = "Please enter a valid email address"
+    //   } 
+    //   // if (!phoneValidation.test(this.props.bookingData.phone) || this.props.bookingData.phone === '') {
+    //   // //   alert['phone'] = "Please enter a valid phone number"
+    //   // }
 
 
-      if (this.props.formData.name === '') {
-        alert['name'] = "Please enter a name"
-      }
+    //   if (this.props.bookingData.name === '') {
+    //     alert['name'] = "Please enter a name"
+    //   }
 
-    }
-
-    this.props.setFormDataItem({ alert })
+    // }
 
 
     event.preventDefault();
     // console.log(this.props);
 
     const { stripe, elements } = this.props;
-    if (!stripe || !elements || (Object.keys(this.props.formData.alert).length >= 1)) {
-      return;
-    }
+    console.log('ths.props', this.props);
+    // if (!stripe || !elements || (Object.keys(this.props.bookingData.alert).length >= 1)) {
+    //   return;
+    // }
 
     const card = elements.getElement(CardNumberElement);
     const result = await stripe.createToken(card);
     if (result.error) {
       // console.log(result.error.message);
     } else {
-      const paymentId = 1; // TODO: set this
-      this.props.handleToken(result, paymentId);
-      // console.log(result.token);
+      const paymentId = this.props.bookingData.id;
+      const response = await axios.put(`/payment/${paymentId}`, {bookingData: this.props.bookingData, ...result});
+      console.log('response', response);
+      if (response.data.error) {
+        // TODO: create toast alert
+        alert(response.data.error);
+      }
     }
   };
 
@@ -64,18 +65,6 @@ class CheckoutForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {  }
-};
-
-const mapDispachToProps = (dispatch, ownProps) => {
-  return {
-    storePaymentIntent: (y) => dispatch({ type: "PAYMENT_INTENT", value: y }),
-    handleToken: (token) => dispatch(handleToken({ ...ownProps, ...token })),
-    setFormDataItem: (inputName, value) => dispatch(setFormDataItem({...ownProps, ...inputName, ...value}))
-  };
-};
-
 const InjectedCheckoutForm = (props) => (
  <ElementsConsumer>
      {({ stripe, elements }) => (
@@ -86,7 +75,7 @@ const InjectedCheckoutForm = (props) => (
  </ElementsConsumer>
 );
 
-export default connect(mapStateToProps, mapDispachToProps)(InjectedCheckoutForm);
+export default InjectedCheckoutForm;
 
 
 // export default function InjectedCheckoutForm() {

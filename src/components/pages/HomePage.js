@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import singletree from '../../images/CreativeMarket9-01.png';
 import nighttrees from '../../images/turqnight.JPG';
 import '../../style.css';
-import { fetchAvailability, setFormDataItem } from '../../_actions';
+import { fetchAvailableSites, setFormDataItem } from '../../_actions';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -41,7 +41,7 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchAvailability();
+        // this.props.fetchAvailableSites();
 
         this.props.setFormDataItem({
             alert: {},
@@ -187,4 +187,4 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 
-export default connect(mapStateToProps, {fetchAvailability, setFormDataItem})(HomePage);
+export default connect(mapStateToProps, {fetchAvailableSites, setFormDataItem})(HomePage);

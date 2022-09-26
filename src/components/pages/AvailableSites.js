@@ -8,8 +8,8 @@ const AvailableSites = (props) => {
     const [selectedSite, setSelectedSite] = useState(null);
 
     const savePaymentData = async () => { 
-        const payment = await axios.post('/payment', {selectedSite, checkin: props.checkin, checkout: props.checkout});
-        navigate(`/payment/${payment.id}`)
+        const payment = await axios.post('/payment', {selectedSite, checkin: props.checkin, checkout: props.checkout, numberOfNights: props.availability.numberOfNights});
+        navigate(`/payment/${payment.data.id}`)
      };
 
     const selectSite = (id) => {
@@ -36,7 +36,7 @@ const AvailableSites = (props) => {
                         <p>Price per night: ${available.price}</p>
                         <p>Number of nights: {props.availability.numberOfNights}</p>
                         <p>Total Price: ${available.price * props.availability.numberOfNights}</p>
-                        <button key={showConfirmBtn[available.id]} onClick={() => savePaymentData()} className={showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}>
+                        <button key={showConfirmBtn[available.id]} onClick={async () => await savePaymentData()} className={showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}>
                             Confirm &amp; Pay
                         </button>
 

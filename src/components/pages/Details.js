@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchAvailability, setFormDataItem } from '../../_actions';
+import { fetchAvailableSites, setFormDataItem } from '../../_actions';
 
 class Payment extends React.Component {
 
@@ -17,7 +17,7 @@ class Payment extends React.Component {
 
     componentDidMount() {
         if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
-            this.props.fetchAvailability(this.props.formData.checkin, this.props.formData.checkout);
+            this.props.fetchAvailableSites(this.props.formData.checkin, this.props.formData.checkout);
         }
         
 
@@ -75,7 +75,7 @@ class Payment extends React.Component {
 
     update = () => {
         if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
-            this.props.fetchAvailability(this.props.formData.checkin, this.props.formData.checkout);
+            this.props.fetchAvailableSites(this.props.formData.checkin, this.props.formData.checkout);
         }
     }
 
@@ -140,4 +140,4 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 
-export default connect(mapStateToProps, {fetchAvailability, setFormDataItem}) (Payment);
+export default connect(mapStateToProps, {fetchAvailableSites, setFormDataItem}) (Payment);

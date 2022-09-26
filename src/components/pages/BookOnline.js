@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import sitemap from '../../images/cane-creek-camp-map.png';
-import { fetchAvailability, setFormDataItem, savePaymentData } from '../../_actions';
+import { fetchAvailableSites, setFormDataItem } from '../../_actions';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import AvailableSites from './AvailableSites';
@@ -31,7 +31,7 @@ class BookOnline extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchAvailability(
+        this.props.fetchAvailableSites(
             localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkin')) : new Date(new Date().setHours(0,0,0,0)),
             localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkout')) : new Date(localStorage.getItem('cehckout'))
         );
@@ -84,39 +84,37 @@ class BookOnline extends React.Component {
         if (this.state.checkin !== '' && this.state.checkout !== '') {
             localStorage.setItem('checkin', this.state.checkin);
             localStorage.setItem('checkout', this.state.checkout);
-            this.props.fetchAvailability(this.state.checkin, this.state.checkout);
+            this.props.fetchAvailableSites(this.state.checkin, this.state.checkout);
         }
     }
 
     render() {
-        // function BookOnline() {
-            return (
-                <div className="container-fluid" id="scrollElement" ref={this.scrollElement}>
-                    <div className="booking-strip">
-                        <div className="form-group">
-                            <label className="form-label">Checkin </label>
-                            <DatePicker selected={this.state.checkin} onChange={(date) => this.setCheckin(date)} />
-                        </div>
-                        <div className="form-group">
-                            <label className="form-label">Checkout </label>
-                            <DatePicker selected={this.state.checkout} onChange={(date) => this.setCheckout(date)} />
-                        </div>
-                        <button className="carousel-button blue" onClick={() => this.getAvailableSites()}>Update</button>
+        return (
+            <div className="container-fluid" id="scrollElement" ref={this.scrollElement}>
+                <div className="booking-strip">
+                    <div className="form-group">
+                        <label className="form-label">Checkin </label>
+                        <DatePicker selected={this.state.checkin} onChange={(date) => this.setCheckin(date)} />
                     </div>
-    
-                    <div className="row available-sites-with-map">
-                        <div className="col-lg-6 section-left available-sites">
-                            <h3>Available Sites</h3>
-                            <AvailableSites availability={this.props.availability} checkin={this.state.checkin} checkout={this.state.checkout}></AvailableSites>
-                        </div>
-                        <div className="col-lg-6 section-right sitemap">
-                            <h3>Site Map</h3>
-                            <img width="100%" alt="tree" src={sitemap}/>
-                        </div>
+                    <div className="form-group">
+                        <label className="form-label">Checkout </label>
+                        <DatePicker selected={this.state.checkout} onChange={(date) => this.setCheckout(date)} />
+                    </div>
+                    <button className="carousel-button blue" onClick={() => this.getAvailableSites()}>Update</button>
+                </div>
+
+                <div className="row available-sites-with-map">
+                    <div className="col-lg-6 section-left available-sites">
+                        <h3>Available Sites</h3>
+                        <AvailableSites availability={this.props.availability} checkin={this.state.checkin} checkout={this.state.checkout}></AvailableSites>
+                    </div>
+                    <div className="col-lg-6 section-right sitemap">
+                        <h3>Site Map</h3>
+                        <img width="100%" alt="tree" src={sitemap}/>
                     </div>
                 </div>
-            );
-        // }
+            </div>
+        );
 
     };
 }
@@ -130,4 +128,4 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 
-export default connect(mapStateToProps, {savePaymentData, fetchAvailability, setFormDataItem}) (BookOnline);
+export default connect(mapStateToProps, {fetchAvailableSites, setFormDataItem}) (BookOnline);
