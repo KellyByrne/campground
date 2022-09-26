@@ -24,7 +24,7 @@ class Amenities extends React.Component {
                     <div className="circle-container col-lg-4 col-sm-12">
                         <div className="circle"><img alt="tree" src={waterandfish}/></div>
                             <h4>Lakefront Camp &amp; Play</h4>
-                            <p>12 acres of land along Douglas Lake offers scenic beauty and a peaceful nature getaway </p>
+                            <p>16 of land along Douglas Lake offers scenic beauty and a peaceful nature getaway </p>
                     </div>
                     <div className="circle-container col-lg-4 col-sm-12">
                         <div className="circle"><img alt="tree" src={snorkel}/></div>
