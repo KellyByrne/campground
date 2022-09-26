@@ -1,7 +1,7 @@
 import React from 'react';
 // import {ConnectedRouter} from 'react-router-redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import configureStore from '../store';
 import Footer from './Footer';
 import Header from './Header';

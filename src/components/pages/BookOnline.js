@@ -33,7 +33,7 @@ class BookOnline extends React.Component {
     componentDidMount() {
         this.props.fetchAvailableSites(
             localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkin')) : new Date(new Date().setHours(0,0,0,0)),
-            localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkout')) : new Date(localStorage.getItem('cehckout'))
+            localStorage.getItem('checkin') ? new Date(localStorage.getItem('checkout')) : new Date(localStorage.getItem('checkout'))
         );
         
 
@@ -64,14 +64,34 @@ class BookOnline extends React.Component {
           : { x: position.left, y: position.top }
     }
 
+
+  
     setCheckin(date) {
+        if (date < this.today) {
+            return alert('cannot set checkin prior to today');
+        } else if (this.state.checkin && this.state.checkout && date > this.state.checkout) {
+            // clear checkout if resetting checkout to a later date than checkin
+            this.setState({checkout: null});
+        } else if (`${date}` === `${this.state.checkout}`) {
+            return alert('you must reserve at least one night');
+        }
+
         this.props.formData.checkin = date;
         this.setState(({checkin: date}));
+        localStorage.setItem('checkin', date);
     }
 
     setCheckout(date) {
+        if (date < new Date(this.today.getTime()  + 60 * 60 * 24 * 1000)) {
+            return alert('cannot set checkout prior to tomorrow');
+        } else if (this.state.checkin && this.state.checkout && date < this.state.checkin) {
+            return alert('cannot set checkout date prior to checkin date');
+        } else if (`${date}` === `${this.state.checkin}`) {
+            return alert('you must reserve at least one night');
+        }
         this.props.formData.checkout = date;
         this.setState(({checkout: date}));
+        localStorage.setItem('checkout', date);
     }
 
 

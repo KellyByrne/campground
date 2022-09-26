@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../../apis/data';
 
 const AvailableSites = (props) => {
+    console.log('props', props);
     const navigate = useNavigate();
     const [showConfirmBtn, setConfirmBtnValue] = useState({});
     const [selectedSite, setSelectedSite] = useState(null);
@@ -27,7 +28,7 @@ const AvailableSites = (props) => {
         setSelectedSite(props.availability.availableSites.find(s => s.id === id));
     };
 
-    if (props.availability.availableSites !== undefined) {
+    if (props.availability.availableSites !== undefined && props.availability.availableSites.length !== 0) {
         return (props.availability.availableSites.map((available, idx) => {
             return (
                 <div key={'site-' + idx}>
@@ -45,7 +46,7 @@ const AvailableSites = (props) => {
             )
         }))
     } else {
-        return <div className="no-sites-text">No sites available for this time frame</div>
+        return <div className="no-sites-text">We are all booked up for these dates. Please check back for cancellations or select new dates.</div>
     }
 }
 

@@ -29,14 +29,17 @@ body {font-family: 'Lato' !important;}
     margin-bottom: 0;
 }
 
+
 .available-sites-with-map {
     display: flex;
-    padding-left: 50px !important;
+    /* padding-left: 50px !important; */
+    /* padding-right: 10px; */
+    padding-left: 10px;
 }
 
-.payment-form {
+/* .payment-form {
     padding-left: 50px !important;
-}
+} */
 
 /* for payment page headers */
 .payment-form h3 {
@@ -231,7 +234,7 @@ body {font-family: 'Lato' !important;}
     color: #6FA9B4;
 }
 
-.booking-strip div {margin-right: 15px;}
+/* .booking-strip div {margin-right: 15px;} */
 .booking-strip .dropdown-div .form-group {margin-right: 0;}
 
 .booking-strip p {
@@ -793,10 +796,10 @@ label.form-label {
         padding: 20px 50px 30px;
     }
 
-    .booking-strip div {
+    /* .booking-strip div {
         margin-right: 0;
         width: 100%;
-    }
+    } */
 
     .booking-strip p {
         text-align: center;
@@ -1124,10 +1127,10 @@ and (max-device-width : 1024px)  {
         padding: 20px 50px 30px;
     }
 
-    .booking-strip div {
+    /* .booking-strip div {
         margin-right: 0;
         width: 100%;
-    }
+    } */
 
     .booking-strip p {
         text-align: center;

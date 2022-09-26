@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import axios from '../../apis/data';
 import CheckoutForm from '../CheckoutForm';
-// const TAX_RATE = .11;
 // eslint-disable-next-line no-undef
 const stripePromise = loadStripe('pk_test_51IFU8YCfUXRmPJhQsjOHXLZpnBQ9DFt5IZHVZ0ly23pa0GpbCbLhRmWBvuY9F4w6LhBOX42O7T3jaKyIQGIoJfFJ00JJeWmKee');
 
@@ -30,6 +29,16 @@ const Payment = (props) =>  {
               fetchData();
         }
     });
+
+    // const element = document.getElementsByClassName(
+
+    // )
+
+    // element.focus({
+    //     preventScroll: true,
+    // });
+
+
     // this.scrollElement = React.createRef();
 
     //     const list = ReactDOM.findDOMNode(this.scrollElement.current);
@@ -48,7 +57,6 @@ const Payment = (props) =>  {
 
     const handleChange = (e, inputName) => {
         setBookingData({...bookingData, [inputName]: e.target.value})
-        // this.props.setFormDataItem({[inputName]: e.target.value});
     }
 
         return (

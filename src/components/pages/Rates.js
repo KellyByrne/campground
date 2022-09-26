@@ -10,7 +10,7 @@ class Rates extends React.Component {
                         <div className="blue-highlight"></div>
                     </div>
                 </div>
-                <div style={{paddingTop:'40px'}} class="col-lg-12">
+                <div style={{paddingTop:'40px'}} className="col-lg-12">
                 <h3>RV Sites</h3>
                 Sun - Wednesday
                     1 AC: 50

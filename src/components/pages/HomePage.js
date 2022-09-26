@@ -41,8 +41,6 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchAvailableSites();
-
         this.props.setFormDataItem({
             alert: {},
             adults: 0,
@@ -72,12 +70,14 @@ class HomePage extends React.Component {
 
     setCheckin(date) {
         if (date < this.today) {
-            // TODO: alert error that cannot set checkin before today
             return alert('cannot set checkin prior to today');
         } else if (this.state.checkin && this.state.checkout && date > this.state.checkout) {
-            // TODO
-            return alert('cannot set checkin date later than checkout date');
+            // clear checkout if resetting checkout to a later date than checkin
+            this.setState({checkout: null});
+        } else if (`${date}` === `${this.state.checkout}`) {
+            return alert('you must reserve at least one night');
         }
+
         this.props.formData.checkin = date;
         this.setState(({checkin: date}));
         localStorage.setItem('checkin', date);
@@ -85,24 +85,18 @@ class HomePage extends React.Component {
 
     setCheckout(date) {
         if (date < new Date(this.today.getTime()  + 60 * 60 * 24 * 1000)) {
-            // TODO: alert error that cannot set checkin before today
             return alert('cannot set checkout prior to tomorrow');
-        } else if (this.state.checkin && this.state.checkout && this.state.checkin > date) {
-            // TODO
+        } else if (this.state.checkin && this.state.checkout && date < this.state.checkin) {
             return alert('cannot set checkout date prior to checkin date');
+        } else if (`${date}` === `${this.state.checkin}`) {
+            return alert('you must reserve at least one night');
         }
         this.props.formData.checkout = date;
         this.setState(({checkout: date}));
         localStorage.setItem('checkout', date);
     }
 
-    callNow = () => {
-
-    }
-
-    // handleChange = (e, inputName) => {
-    //     this.props.setFormDataItem({[inputName]: e.target.value}); 
-    // }
+    callNow = () => {}
 
     render() {
         return (
