@@ -12,6 +12,13 @@ const AvailableSites = (props) => {
         navigate(`/payment/${payment.data.id}`)
      };
 
+    //  const selectNewDates = (date) => {
+    //      console.log('date', date);
+    //     props.setBookingDates({startDate: new Date(date.startDate), endDate: new Date(date.endDate)});
+    //  }
+
+
+
     const selectSite = (id) => {
         let allSites = document.getElementsByClassName('site');
         let identifier = id;
@@ -27,10 +34,6 @@ const AvailableSites = (props) => {
         setSelectedSite(props.availability.availableSites.find(s => s.id === id));
     };
 
-    const selectNewDatesForSite = (siteId, dates) => {
-
-    }
-
     if (props.availability.availableSites !== undefined && props.availability.availableSites.length !== 0) {
         return (props.availability.availableSites.map((available, idx) => {
             return (
@@ -40,6 +43,7 @@ const AvailableSites = (props) => {
                         <p>Price per night: ${available.price}</p>
                         <p>Number of nights: {props.availability.numberOfNights}</p>
                         <p>Total Price: ${available.price * props.availability.numberOfNights}</p>
+                        {/* <p>Dates: {`${props.checkin.toLocaleDateString('en-US')} - ${props.checkout.toLocaleDateString('en-US')}`}</p> */}
                         <button key={showConfirmBtn[available.id]} onClick={async () => await savePaymentData()} className={showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}>
                             Confirm &amp; Pay
                         </button>
@@ -56,7 +60,7 @@ const AvailableSites = (props) => {
                     <div className="site" id={key}>
                         <h4>Site {key}</h4>
                         {props.availability.availableDatesForSites[key].map((date) => {
-                            return <div onClick={() => selectNewDatesForSite(key, date)} key={`${key}${date.startDate}`} className="no-sites-text">
+                            return <div style={{'cursor': 'pointer'}} onClick={() => { props.setBookingDates({checkin: new Date(date.startDate), checkout: new Date(date.endDate)}); props.getAvailableSites(date.startDate, date.endDate)}} key={`${key}${date.startDate}`} className="no-sites-text">
                                 {date.startDate} - {date.endDate}
                             </div>
 

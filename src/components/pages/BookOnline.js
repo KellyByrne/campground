@@ -84,10 +84,11 @@ const BookOnline = () => {
         localStorage.setItem('checkout', date);
     }
 
-    const getAvailableSites = async () => {
+    const getAvailableSites = async (startDate, endDate) => {
+        console.log('site avail dates', startDate, 'end', endDate);
         if (bookingDates.checkin !== '' && bookingDates.checkout !== '') {
-            localStorage.setItem('checkin', bookingDates.checkin);
-            localStorage.setItem('checkout', bookingDates.checkout);
+            localStorage.setItem('checkin', new Date(startDate));
+            localStorage.setItem('checkout', new Date(endDate));
             setAvailableSites(await getSitesApiRequest());
         }
     }
@@ -104,13 +105,13 @@ const BookOnline = () => {
                     <label className="form-label">Checkout </label>
                     <DatePicker selected={bookingDates.checkout} onChange={(date) => setCheckout(date)} />
                 </div>
-                <button className="carousel-button blue" onClick={async () => getAvailableSites()}>Update</button>
+                <button className="carousel-button blue" onClick={async () => getAvailableSites(bookingDates.checkin, bookingDates.checkout)}>Update</button>
             </div>
 
             <div className="row available-sites-with-map">
                 <div className="col-lg-6 section-left available-sites">
-                    <h3>Available Sites</h3>
-                    <AvailableSites setBookingDates={setBookingDates} availability={availability} checkin={bookingDates.checkin} checkout={bookingDates.checkout}></AvailableSites>
+                    {availability.availableSites && availability.availableSites.length !== 0 ? <h3>Available Sites</h3> : ''}
+                    <AvailableSites getAvailableSites={getAvailableSites} setBookingDates={setBookingDates} availability={availability} checkin={bookingDates.checkin} checkout={bookingDates.checkout}></AvailableSites>
                 </div>
                 <div className="col-lg-6 section-right sitemap">
                     <h3>Site Map</h3>
