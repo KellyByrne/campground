@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchAvailableSites, setFormDataItem } from '../../_actions';
+import {setFormDataItem } from '../../_actions';
 
 class Payment extends React.Component {
 
@@ -16,9 +16,9 @@ class Payment extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
-            this.props.fetchAvailableSites(this.props.formData.checkin, this.props.formData.checkout);
-        }
+        // if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
+        //     this.props.fetchAvailableSites(this.props.formData.checkin, this.props.formData.checkout);
+        // }
         
 
         this.props.setFormDataItem({
@@ -71,12 +71,6 @@ class Payment extends React.Component {
 
     handleChange = (e, inputName) => {
         this.props.setFormDataItem({[inputName]: e.target.value}); 
-    }
-
-    update = () => {
-        if (this.props.formData.checkin !== '' && this.props.formData.checkout !== '') {
-            this.props.fetchAvailableSites(this.props.formData.checkin, this.props.formData.checkout);
-        }
     }
 
     render() {
@@ -140,4 +134,4 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 
-export default connect(mapStateToProps, {fetchAvailableSites, setFormDataItem}) (Payment);
+export default connect(mapStateToProps, {setFormDataItem}) (Payment);

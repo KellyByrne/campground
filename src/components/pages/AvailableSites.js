@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../../apis/data';
 
 const AvailableSites = (props) => {
-    console.log('props', props);
     const navigate = useNavigate();
     const [showConfirmBtn, setConfirmBtnValue] = useState({});
     const [selectedSite, setSelectedSite] = useState(null);
@@ -28,6 +27,10 @@ const AvailableSites = (props) => {
         setSelectedSite(props.availability.availableSites.find(s => s.id === id));
     };
 
+    const selectNewDatesForSite = (siteId, dates) => {
+
+    }
+
     if (props.availability.availableSites !== undefined && props.availability.availableSites.length !== 0) {
         return (props.availability.availableSites.map((available, idx) => {
             return (
@@ -40,13 +43,28 @@ const AvailableSites = (props) => {
                         <button key={showConfirmBtn[available.id]} onClick={async () => await savePaymentData()} className={showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}>
                             Confirm &amp; Pay
                         </button>
-
                     </div>
                 </div>
             )
         }))
-    } else {
-        return <div className="no-sites-text">We are all booked up for these dates. Please check back for cancellations or select new dates.</div>
+    } else if (props.availability.availableDatesForSites) {
+        return <div className="no-sites-text">
+            Darn, we are all booked up for these date, but here are some available dates. Click a date range or enter new dates to search again.
+
+        {Object.keys(props.availability.availableDatesForSites).map(key =>  {
+                return <div key={`site-${key}`}>
+                    <div className="site" id={key}>
+                        <h4>Site {key}</h4>
+                        {props.availability.availableDatesForSites[key].map((date) => {
+                            return <div onClick={() => selectNewDatesForSite(key, date)} key={`${key}${date.startDate}`} className="no-sites-text">
+                                {date.startDate} - {date.endDate}
+                            </div>
+
+                            })}
+                    </div>
+                </div>
+            })}
+         </div>
     }
 }
 
