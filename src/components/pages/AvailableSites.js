@@ -37,7 +37,7 @@ const AvailableSites = (props) => {
     if (props.availability.availableSites !== undefined && props.availability.availableSites.length !== 0) {
         return (props.availability.availableSites.map((available, idx) => {
             return (
-                <div key={'site-' + idx}>
+                <div style={{'cursor': 'pointer'}} key={'site-' + idx}>
                     <div className="site" id={available.id} onClick={() => selectSite(available.id)}>
                         <h4>Site {available.number}</h4>
                         <p>Price per night: ${available.price}</p>

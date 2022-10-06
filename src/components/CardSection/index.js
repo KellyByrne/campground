@@ -2,6 +2,7 @@ import React from "react";
 import { CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
 
 const CARD_ELEMENT_OPTIONS = {
+  // classes: { base: 'form-input form-control'},
   style: {
     base: {
       color: "#303238",
@@ -23,14 +24,15 @@ const CARD_ELEMENT_OPTIONS = {
 
 function CardSection() {
   return (
-    <label>
+    // <label>
+    <div className="form-group">
       <label className="form-label">Card Number </label>
-      <CardNumberElement options={CARD_ELEMENT_OPTIONS} />
+      <CardNumberElement className="form-input form-control" options={CARD_ELEMENT_OPTIONS} />
       <label className="form-label">Expiration </label>
-      <CardExpiryElement options={CARD_ELEMENT_OPTIONS}/>
+      <CardExpiryElement className="form-input form-control" options={CARD_ELEMENT_OPTIONS}/>
       <label className="form-label">CVC </label>
-      <CardCvcElement options={CARD_ELEMENT_OPTIONS}/>
-    </label>
+      <CardCvcElement className="form-input form-control" options={CARD_ELEMENT_OPTIONS}/>
+    </div>
   );
 }
 
