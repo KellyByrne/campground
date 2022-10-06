@@ -170,13 +170,4 @@ const Payment = (props) =>  {
 
 }
 
-// const mapStateToProps = (state, ownProps) => {
-//     return {
-//         formData: state.formData,
-//         availability: state.availability,
-//         paymentData: state.paymentData,
-//     }
-
-// }
-
 export default Payment;

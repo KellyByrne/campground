@@ -12,13 +12,6 @@ const AvailableSites = (props) => {
         navigate(`/payment/${payment.data.id}`)
      };
 
-    //  const selectNewDates = (date) => {
-    //      console.log('date', date);
-    //     props.setBookingDates({startDate: new Date(date.startDate), endDate: new Date(date.endDate)});
-    //  }
-
-
-
     const selectSite = (id) => {
         let allSites = document.getElementsByClassName('site');
         let identifier = id;
