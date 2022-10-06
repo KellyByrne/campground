@@ -43,7 +43,7 @@ class Header extends React.Component {
                         <li><Link to="/gallery">Photos</Link></li>
                         <li><Link to="/rates">Park Rates</Link></li>
                         <li><Link to="/parkmap">Park Map</Link></li>
-                        <li><Link to="/book">Book Online</Link></li>
+                        {/* <li><Link to="/book">Book Online</Link></li> */}
                         <li><Link to="/attractions">Area Attractions</Link></li>
                     </ul>
                     {/* hide on desktop */}
