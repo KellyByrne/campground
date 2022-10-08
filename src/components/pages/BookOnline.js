@@ -31,27 +31,6 @@ const BookOnline = () => {
               fetchData();
         }
     });
-
-    // constructor(props) {
-
-    //     this.scrollElement = React.createRef();
-    // }
-
-    // componentDidMount() {
-    //     const list = ReactDOM.findDOMNode(this.scrollElement.current);
-    //     list.addEventListener('scroll', this.handleScroll());
-      
-    // }
-
-    // const handleScroll = (e) => {
-    //     let useWindow;
-    //     const target = document.getElementById('scrollElement')
-    //     const position = target.getBoundingClientRect();
-      
-    //     return useWindow
-    //       ? { x: window.scrollX, y: window.scrollY }
-    //       : { x: position.left, y: position.top }
-    // }
   
     const setCheckin = async (date) => {
         checkin = date;
@@ -94,7 +73,6 @@ const BookOnline = () => {
     }
 
     return (
-        // ref={this.scrollElement}
         <div className="container-fluid" id="scrollElement">
             <div className="booking-strip">
                 <div className="form-group">

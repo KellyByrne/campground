@@ -30,37 +30,11 @@ const Payment = (props) =>  {
         }
     });
 
-    // const element = document.getElementsByClassName(
-
-    // )
-
-    // element.focus({
-    //     preventScroll: true,
-    // });
-
-
-    // this.scrollElement = React.createRef();
-
-    //     const list = ReactDOM.findDOMNode(this.scrollElement.current);
-    //     list.addEventListener('scroll', this.handleScroll());
-     
-
-    // handleScroll = (e) => {
-    //     let useWindow;
-    //     const target = document.getElementById('scrollElement')
-    //     const position = target.getBoundingClientRect();
-     
-    //     return useWindow
-    //       ? { x: window.scrollX, y: window.scrollY }
-    //       : { x: position.left, y: position.top }
-    // }
-
     const handleChange = (e, inputName) => {
         setBookingData({...bookingData, [inputName]: e.target.value})
     }
 
         return (
-            // ref={this.scrollElement}
             <div className="container-fluid" id="scrollElement">
                 <div className="col-lg-12">
                     <form className="payment-form">
