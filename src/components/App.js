@@ -14,7 +14,6 @@ import Gallery from './pages/Gallery';
 import HomePage from './pages/HomePage';
 import ParkMap from './pages/ParkMap';
 import Payment from './pages/Payment';
-import Rates from './pages/Rates';
 
 export const store = configureStore();
 
@@ -28,7 +27,6 @@ const App = () => {
                         <Routes>
                         <Route path="/" exact element={< HomePage />}/>
                         <Route path="/amenities"  element={< Amenities />}/> 
-                        <Route path="/rates"  element={< Rates />}/> 
                         <Route path="/parkmap"  element={< ParkMap />}/> 
                         <Route path="/attractions"  element={< Attractions />}/>
                         <Route path="/gallery"  element={< Gallery />}/> 

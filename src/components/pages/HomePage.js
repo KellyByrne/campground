@@ -152,6 +152,7 @@ class HomePage extends React.Component {
                                 <li>Clean, tiled restrooms &amp; showers</li>
                                 <li>Free laundry</li>
                                 <li>10 minutes to grocery shopping</li>
+                                <li>Large, 60 x 30 foot sites</li>
                             </ul>
                         </div>
                     </div>
