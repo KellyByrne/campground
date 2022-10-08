@@ -85,7 +85,7 @@ const BookOnline = () => {
     }
 
     const getAvailableSites = async (startDate, endDate) => {
-        console.log('site avail dates', startDate, 'end', endDate);
+        // console.log('site avail dates', startDate, 'end', endDate);
         if (bookingDates.checkin !== '' && bookingDates.checkout !== '') {
             localStorage.setItem('checkin', new Date(startDate));
             localStorage.setItem('checkout', new Date(endDate));
