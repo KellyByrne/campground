@@ -39,11 +39,11 @@ class Header extends React.Component {
                     {/* hide on mobile- show when hamburger clicked */}
                     <ul className={`collapse-mobile ${this.state.isActive ? "is-active" : ""}`}>
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/amenities">Amenities</Link></li>
+                        {/* <li><Link to="/amenities">Amenities</Link></li> */}
                         <li><Link to="/gallery">Photos</Link></li>
                         <li><Link to="/parkmap">Park Map</Link></li>
                         {/* <li><Link to="/book">Book Online</Link></li> */}
-                        <li><Link to="/attractions">Area Attractions</Link></li>
+                        {/* <li><Link to="/attractions">Area Attractions</Link></li> */}
                     </ul>
                     {/* hide on desktop */}
                     {/* Trigger the active state by appending class name is-active: */}

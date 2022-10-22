@@ -29,27 +29,6 @@ body {font-family: 'Lato' !important;}
     margin-bottom: 0;
 }
 
-
-.available-sites-with-map {
-    display: flex;
-    /* padding-left: 50px !important; */
-    /* padding-right: 10px; */
-    padding-left: 10px;
-}
-
-/* .payment-form {
-    padding-left: 50px !important;
-} */
-
-/* for payment page headers */
-.payment-form h3 {
-    margin-top: 30px;
-}
-
-.no-sites-text {
-    text-align: center;
-}
-
 .payment-page label {
     color:#000;
     font-weight: 400 !important;
@@ -165,7 +144,7 @@ body {font-family: 'Lato' !important;}
 }
 
 /* Hero */
-.hero {background: url(./images/tree-line-1.png) repeat left 0px;background-repeat: repeat-x; background-size: contain;height:500px; padding:100px;position:relative;}
+.hero {background: url(./images/tree-line-1.png) repeat left 0px;background-size: contain;height:500px;padding:100px;position:relative;}
 .hero .overlay {
     top: 0;
     left: 0;
@@ -191,11 +170,6 @@ body {font-family: 'Lato' !important;}
 .copy-sc h3 {font-family:'BonVivantSerif';letter-spacing: 1px;font-size:40px;}
 .copy-sc ul {list-style:none;padding:0;}
 .copy-sc ul li {font-family:'Lato';font-weight:300 !important;font-size:18px;}
-
-
-.react-datepicker__input-container > input {
-    width: 90%;
-}
 
 .btn-blue {
     background-color: #6FA9B4 !important;
@@ -343,12 +317,12 @@ p.copy {
 }
 
 .section-left {
-    /* padding-left: 100px !important; */
+    padding-left: 100px !important;
     padding-top:50px;
 }
 
 .section-right {
-    /* padding-right: 100px !important; */
+    padding-right: 100px !important;
     padding-top:50px;
 }
 
@@ -567,6 +541,9 @@ label.form-label {
 .circle img {
     height: 66%;
 }
+.circle-icon h1 {
+    text-align: center;
+}
 
 .circle-icon h2 {
     text-align: center;
@@ -769,12 +746,12 @@ label.form-label {
         z-index: 100;
     }
 
-    /* .hero {
+    .hero {
         background: url(/static/media/tree-line-1.6a115048.png) no-repeat left 100%;
         height: auto;
         background-size: contain;
         padding: 50px 0 120px;
-    } */
+    }
 
     .hero .box {
         width: 250px;
@@ -796,10 +773,10 @@ label.form-label {
         padding: 20px 50px 30px;
     }
 
-    /* .booking-strip div {
+    .booking-strip div {
         margin-right: 0;
         width: 100%;
-    } */
+    }
 
     .booking-strip p {
         text-align: center;
@@ -816,15 +793,10 @@ label.form-label {
         padding: 0;
     }
 
-    .amenities .row {
-        display: flex;
-    }
-
     .amenities .photo-sc img {
         height: auto;
         padding-top: 0;
         width: 100%;
-        padding-right: 15px;
     }
 
     .amenities .copy-sc {
@@ -855,6 +827,25 @@ label.form-label {
     .calendar-div, .dropdown-div {
         width: 70%;
     }
+
+    input { width:auto;}
+    .header {height:120px;}
+    .section-left {padding-left:25px !important; padding-right:25px !important;}
+    .carousel-button.blue { margin-top:20px;}
+
+    .payment-form .form-group .form-control { margin: 0 0 10px 0;}
+    .payment-form h3 { padding: 10px;}
+    .payment-form .form-group {margin-bottom: 10px;}
+    .payment-form .carousel-button.blue {
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+        padding: 10px 20px;
+        float: none !important;
+        height: auto;
+    }
+    .booking-strip input {width: 100%;}
+
+
 
  }
 
@@ -911,7 +902,7 @@ label.form-label {
     }
 
     .outer {
-        margin-bottom:100px;
+        margin-bottom:50px;
     }
 
     .circle-icon h1 {
@@ -929,10 +920,11 @@ label.form-label {
         z-index: 5;
         position: relative;
     }
+
   
   .DemoWrapper {
     margin-top: 20px;
-    /* max-width: 1000px; */
+    max-width: 500px;
     display: flex;
     flex-direction: column;
   }
@@ -985,7 +977,7 @@ label.form-label {
   .StripeElement {
     display: block;
     margin: 10px 0 20px 0;
-    min-width: 345px;
+    width: 500px;
     padding: 10px 14px;
     font-size: 1em;
     font-family: "Source Code Pro", monospace;
@@ -1099,12 +1091,12 @@ and (max-device-width : 1024px)  {
         z-index: 100;
     }
 
-    /* .hero {
+    .hero {
         background: url(/static/media/tree-line-1.6a115048.png) no-repeat left 100%;
         height: auto;
         background-size: contain;
         padding: 50px 0 120px;
-    } */
+    }
 
     .hero .box {
         width: 250px;
@@ -1126,10 +1118,10 @@ and (max-device-width : 1024px)  {
         padding: 20px 50px 30px;
     }
 
-    /* .booking-strip div {
+    .booking-strip div {
         margin-right: 0;
         width: 100%;
-    } */
+    }
 
     .booking-strip p {
         text-align: center;
@@ -1150,7 +1142,6 @@ and (max-device-width : 1024px)  {
         height: auto;
         padding-top: 0;
         width: 100%;
-        padding-right: 15px;
     }
 
     .amenities .copy-sc {
@@ -1184,10 +1175,10 @@ and (max-device-width : 1024px)  {
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
     /* .header {background: red;} */
 
-    /* .hero {
+    .hero {
         height: 500px;
         padding: 100px;
-    } */
+    }
 
     .hero .message {
         display: block;
@@ -1263,17 +1254,11 @@ and (max-device-width : 1024px)  {
         top: initial;
     }
 
-    /* .hero {
+    .hero {
         background: url(/static/media/tree-line-1.6a115048.png) no-repeat left 0px;
-        /* min-height: 500px; */
-        /* object-fit: fill; */
-        /* height: auto; */
-        /* object-fit: scale-down; */
-        /* max-width: 100%; */
-        /* background-repeat: no-repeat; */
-        /* background-size: cover; */
-
-    /* } */
+        height: 500px;
+        background-size: cover;
+    }
 
     .hero .message {
         display:none;
@@ -1302,6 +1287,31 @@ and (max-device-width : 1024px)  {
     }
 
 }
+
+@media screen and (max-width: 820px) {
+    .header {height:120px;}
+    .hamburger {padding-right: 30px;}
+    .booking-strip input {width: 96%;}
+}
+
+/* @media screen and (max-width: 414px) {
+    input { width:auto;}
+    .header {height:120px;}
+    .section-left {padding-left:25px !important; padding-right:25px !important;}
+    .carousel-button.blue { margin-top:20px;}
+
+    .payment-form .form-group .form-control { margin: 0 0 10px 0;}
+    .payment-form h3 { padding: 10px;}
+    .payment-form .form-group {margin-bottom: 10px;}
+    .payment-form .carousel-button.blue {
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+        padding: 10px 20px;
+        float: none !important;
+        height: auto;
+    }
+    .booking-strip input {width: 80%;}
+} */
 
 
 
