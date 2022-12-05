@@ -20,6 +20,7 @@
 }
 
 body {font-family: 'Lato' !important;}
+.logo-small {display:none !important;}
 
 .container-fluid {padding:0 !important;}
 
@@ -81,9 +82,15 @@ body {font-family: 'Lato' !important;}
     left: -24px;
     color: #000;
 }
-.header .logo {    
+/* .header .logo {    
     position: relative;
     padding-left: 100px;
+} */
+img.logo-big {
+    height: 100px;
+}
+img.logo-footer {
+    height: 80px;
 }
 .header .tiny {
     height: 135px;
@@ -107,7 +114,7 @@ body {font-family: 'Lato' !important;}
 .footer p {margin-bottom:5px;}
 .footer-title span {font-family:'NorthwellAlt';color:#6FA9B4;font-size:25px;padding-right:5px;}
 .footer .title {
-    height:70px;
+    height:85px;
 }
 .footer h1 {
     font-family:'BonVivant'; 
@@ -662,6 +669,27 @@ label.form-label {
     }
  }
 
+ @media screen and (max-width: 820px) {
+    .header {height:140px;}
+    .hamburger {padding-right: 30px;}
+    .booking-strip input {width: 96%;}
+
+}
+
+@media screen and (max-width: 820px) {
+    img.logo-big {
+        height: 90px;
+    }
+}
+
+@media screen and (max-width: 1171px) {
+.hero {background-size: cover;}
+.hero .message {display:none}
+.hero .box {right: 63px;}
+}
+
+
+
  /* // Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) { 
     .mobileonly {
@@ -677,11 +705,15 @@ label.form-label {
         min-height: 120px;
         margin-left: 0 !important;
         margin-right: 0 !important;
+        height: 120px;
+    }
+    img.logo-big {
+        height: 70px;
     }
 
     .header .title {
         height: auto;
-        padding-left:10px;
+        padding-left:0px;
     }
     
     .header .logo {
@@ -848,6 +880,10 @@ label.form-label {
 
 
  }
+
+ @media screen and (max-width: 520px) {
+    .hero .box {right: initial;}
+}
 
     .testimonials {
         background: #000220;
@@ -1288,12 +1324,28 @@ and (max-device-width : 1024px)  {
 
 }
 
-@media screen and (max-width: 820px) {
-    .header {height:120px;}
+/* @media screen and (max-width: 820px) {
+    .header {height:140px;}
     .hamburger {padding-right: 30px;}
     .booking-strip input {width: 96%;}
+
 }
 
+@media screen and (max-width: 820px) {
+    img.logo-big {
+        height: 90px;
+    }
+}
+
+@media screen and (max-width: 1171px) {
+.hero {background-size: cover;}
+.hero .message {display:none}
+.hero .box {right: 63px;}
+}
+
+@media screen and (max-width: 520px) {
+    .hero .box {right: initial;}
+} */
 /* @media screen and (max-width: 414px) {
     input { width:auto;}
     .header {height:120px;}

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import tinytrees from '../images/CreativeMarket9-10.png';
+// import tinytrees from '../images/CreativeMarket9-10.png';
+import logobig from '../images/lplogo-big.png';
+import logosmall from '../images/lplogo-small.png';
 import '../style.css';
 
 class Header extends React.Component {
@@ -30,9 +32,11 @@ class Header extends React.Component {
                     <div className="title">
                         <Link to="/">
                             <div className="logo" >
-                                <h1>Lakeside Pines</h1>
+                                {/* <h1>Lakeside Pines</h1>
                                 <h2>Campground &amp; RV Resort</h2>
-                                <img alt="tree" className="tiny" src={tinytrees}/>
+                                <img alt="tree" className="tiny" src={tinytrees}/> */}
+                                <img alt="logo" className="logo-big" src={logobig}/> 
+                                <img alt="logo"  className="logo-small" src={logosmall}/> 
                             </div>
                         </Link>
                     </div>
