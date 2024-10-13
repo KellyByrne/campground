@@ -44,7 +44,7 @@ const AvailableSites = (props) => {
                 </div>
             )
         }))
-    } else if (props.availability.availableDatesForSites) {
+    } else if (props.availability.availableDatesForSites && Object.keys(props.availability.availableDatesForSites).length) {
         return <div className="no-sites-text">
             Darn, we are all booked up for these date, but here are some available dates. Click a date range or enter new dates to search again.
 
