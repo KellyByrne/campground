@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from '../../apis/data';
 import CheckoutForm from '../CheckoutForm';
 // eslint-disable-next-line no-undef
-const stripePromise = loadStripe('pk_test_51IFU8YCfUXRmPJhQsjOHXLZpnBQ9DFt5IZHVZ0ly23pa0GpbCbLhRmWBvuY9F4w6LhBOX42O7T3jaKyIQGIoJfFJ00JJeWmKee');
+const stripePromise = loadStripe('pk_test_51HLYv6AazfTTlzsuUHbiiolAwJGMFsSM2ubmvO8WQ5Rxnla68lffPwTGQ3x9KUTI4KYhz6bbIOVKk32tUd3m04q400W9Wf14pg');
 
 const Payment = (props) =>  {
     const { id } = useParams();
@@ -28,6 +28,8 @@ const Payment = (props) =>  {
               }
               fetchData();
         }
+        console.log('bookingData', bookingData);
+        
     });
 
     const handleChange = (e, inputName) => {
