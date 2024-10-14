@@ -28,7 +28,7 @@ const Payment = (props) =>  {
               }
               fetchData();
         }
-        console.log('bookingData', bookingData);
+        // console.log('bookingData', bookingData);
         
     });
 

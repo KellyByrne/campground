@@ -11,7 +11,7 @@ class CheckoutForm extends React.Component {
     // console.log(this.props);
 
     const { stripe, elements } = this.props;
-    console.log('ths.props', this.props);
+    // console.log('ths.props', this.props);
 
     const card = elements.getElement(CardNumberElement);
     const result = await stripe.createToken(card);
@@ -21,7 +21,7 @@ class CheckoutForm extends React.Component {
     } else {
       const paymentId = this.props.bookingData.id;
       const response = await axios.put(`/payment/${paymentId}`, {bookingData: this.props.bookingData, ...result});
-      console.log('response', response);
+      // console.log('response', response);
       if (response.data.error) {
         // TODO: redirect to payment success page with order details instead
         alert(response.data.error);
