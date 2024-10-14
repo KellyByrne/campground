@@ -35,7 +35,7 @@ const AvailableSites = (props) => {
                         <h4>Site {available.number}</h4>
                         <p>Price per night: ${available.price}</p>
                         <p>Number of nights: {props.availability.numberOfNights}</p>
-                        <p>Total Price: ${available.price * props.availability.numberOfNights}</p>
+                        <p>Total Price: ${(available.price * props.availability.numberOfNights).toFixed(2)}</p>
                         {/* <p>Dates: {`${props.checkin.toLocaleDateString('en-US')} - ${props.checkout.toLocaleDateString('en-US')}`}</p> */}
                         <button key={showConfirmBtn[available.id]} onClick={async () => await savePaymentData()} className={showConfirmBtn[available.id] ? "carousel-button blue longer" : 'hide'}>
                             Confirm &amp; Pay
