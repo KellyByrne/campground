@@ -96,6 +96,7 @@ class Payment extends React.Component {
                     </div>
                     <div className="col-lg-5 section-right details">
                         <div className="reservation-details">
+                            {/* TODO: add cancellation guidelines and link to cancel */}
                             {/* <h4>Lakeside Pines RV Park</h4>
                             <p>1645 E Highway 25, Dandridge, TN 37725</p>
                             <p>(832) 465-6700</p> */}
