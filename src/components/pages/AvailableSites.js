@@ -33,7 +33,7 @@ const AvailableSites = (props) => {
                 <div style={{'cursor': 'pointer'}} key={'site-' + idx}>
                     <div className="site" id={available.id} onClick={() => selectSite(available.id)}>
                         <h4>Site {available.number}</h4>
-                        <p>Price per night: ${available.price}</p>
+                        <p>Price per night: ${(available.price).toFixed(2)}</p>
                         <p>Number of nights: {props.availability.numberOfNights}</p>
                         <p>Total Price: ${(available.price * props.availability.numberOfNights).toFixed(2)}</p>
                         {/* <p>Dates: {`${props.checkin.toLocaleDateString('en-US')} - ${props.checkout.toLocaleDateString('en-US')}`}</p> */}
