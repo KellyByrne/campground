@@ -36,6 +36,15 @@ const Payment = (props) =>  {
         setBookingData({...bookingData, [inputName]: e.target.value})
     }
 
+        if (bookingData.status === 'confirmed') {
+            // TODO: redirect to the payment success page instead
+            return (<div className="container-fluid" id="scrollElement">
+                <div style={{height: '500px'}} className="col-lg-12">
+                Your booking is already confirmed for {new Date(bookingData?.startDate).toLocaleDateString('en-US') } - {new Date(bookingData?.endDate).toLocaleDateString('en-US')}
+                </div>
+            </div>)
+        }
+
         return (
             <div className="container-fluid" id="scrollElement">
                 <div className="col-lg-12">
