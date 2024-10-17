@@ -2,6 +2,10 @@
   "name": "venue-motel",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.20.2",
+    "npm": "8.19.4"
+  },
   "dependencies": {
     "@stripe/react-stripe-js": "^1.4.0",
     "@stripe/stripe-js": "^1.13.2",
