@@ -71,11 +71,11 @@ const BookOnline = () => {
 
             <div className="row available-sites-with-map">
                 <div className="col-lg-6 section-left available-sites">
-                {!availability?.availableDatesForSites ?
+                {/* {!availability?.availableDatesForSites ?
                     <div className="container-fluid" id="scrollElement">
                         No sites available. Please select new dates.
                     </div> : <></>
-                    }
+                    } */}
                     {availability.availableSites && availability.availableSites.length !== 0 ? <h3>Available Sites</h3> : ''}
                     <AvailableSites getAvailableSites={getAvailableSites} setBookingDates={setBookingDates} availability={availability} checkin={bookingDates.checkin} checkout={bookingDates.checkout}></AvailableSites>
                 </div>

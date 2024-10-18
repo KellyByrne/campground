@@ -33,6 +33,7 @@ const AvailableSites = (props) => {
                 <div style={{'cursor': 'pointer'}} key={'site-' + idx}>
                     <div className="site" id={available.id} onClick={() => selectSite(available.id)}>
                         <h4>Site {available.number}</h4>
+                        <p>Dates: {props.checkin.toLocaleDateString('en-US')} - {props.checkout.toLocaleDateString('en-US')}</p>
                         <p>Price per night: ${(available.price).toFixed(2)}</p>
                         <p>Number of nights: {props.availability.numberOfNights}</p>
                         <p>Total Price: ${(available.price * props.availability.numberOfNights).toFixed(2)}</p>
@@ -46,7 +47,7 @@ const AvailableSites = (props) => {
         }))
     } else if (props.availability.availableDatesForSites && Object.keys(props.availability.availableDatesForSites).length) {
         return <div className="no-sites-text">
-            Darn, we are all booked up for these date, but here are some available dates. Click a date range or enter new dates to search again.
+            {props.availability.numberOfNights === 0 ? 'You must select at least one full night to stay. And here are some more available dates.' : 'Darn, we are all booked up for these date, but here are some available dates. Click a date range or enter new dates to search again.'}
 
         {Object.keys(props.availability.availableDatesForSites).map(key =>  {
                 return <div key={`site-${key}`}>
@@ -62,6 +63,8 @@ const AvailableSites = (props) => {
                 </div>
             })}
          </div>
+    } else if (props.numberOfNights === 0) {
+        
     }
 }
 
